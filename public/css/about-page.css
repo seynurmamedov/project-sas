@@ -1,0 +1,30 @@
+.my-link{
+    color: black!important;
+    transition: 0.3s;
+    text-decoration: none!important;
+}
+.my-link:hover{
+    color: #fb5c42!important;
+    transition: 0.3s;
+}
+.headphones::before,.undo::before,.archive::before {
+    font-family: "Font Awesome\ 5 Free";
+    font-weight: 900;
+    content: "\f025";
+    color: #fb5c42;
+    font-size: 35px;
+    position: relative;
+    left: -40px;
+    top: 45px;
+  }
+  .undo::before{
+    content: "\f2ea";
+  }
+  .archive::before {
+    content: "\f187";
+  }
+  @media (min-width: 300px) and (max-width: 767.98px) { 
+  .headphones::before,.undo::before,.archive::before{
+    position: static;
+  }
+}
