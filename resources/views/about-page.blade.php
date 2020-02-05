@@ -5,7 +5,7 @@
 @section('content')
 <div class="w-100 mt-lg-5 mt-md-5 mb-5 text-center">
    <p class="h1 font-weight-bold w-100">About us</p>
-   <p class="w-100">
+   <p class="w-100 mt-1">
       <a href="#" class="my-link">Home </a>
       <i class="fas fa-chevron-right" style="font-size: 12px;"></i>
       <a href="#" class="my-link"> About Us</a>
