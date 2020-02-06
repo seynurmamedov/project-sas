@@ -134,7 +134,7 @@
                   <a href="#" class="col-4 mt-3 p-0 ">
                   <i class="search-button fas fa-search fa-lg mr-3 "></i>
                   </a>
-                  <a class="nav-link p-0 col-4 mt-1" href="#">
+                  <a class="nav-link p-0 col-4 mt-1" href="home">
                      <h2 class="p-0"> 
                         Capie<span class="color-orange">.</span>
                      </h2>
@@ -191,7 +191,7 @@
                   <i class="fas fa-bars fa-lg "></i>
                </div>
                <div class="pt-5 pb-4 logo">
-                  <a class="nav-link pl-0" href="#">
+                  <a class="nav-link pl-0" href="home">
                      <h2> 
                         Capie<span class="color-orange">.</span>
                      </h2>
@@ -359,7 +359,7 @@
                      <div class="row justify-content-between">
                         <div class="col-lg-3 px-2">
                            <div class="logo">
-                              <a class="nav-link p-0" href="#">
+                              <a class="nav-link p-0" href="home">
                                  <h2 class="p-0"> 
                                     Capie<span class="color-orange">.</span>
                                  </h2>
