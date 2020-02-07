@@ -28,9 +28,9 @@ var DatatableBasic = function() {
         $.extend( $.fn.dataTable.defaults, {
             autoWidth: false,
             columnDefs: [{ 
-                orderable: false,
+                orderable: true,
                 width: 100,
-                targets: [ 5 ]
+                targets: [ 3 ]
             }],
             dom: '<"datatable-header"fl><"datatable-scroll"t><"datatable-footer"ip>',
             language: {

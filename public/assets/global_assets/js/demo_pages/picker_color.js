@@ -220,6 +220,15 @@ var ColorPicker = function() {
                 label.removeClass('hidden').html('Hide called: ' + '<span class="font-weight-semibold">' + c.toHexString() + '</span>');
             }
         });
+        $('.my-colorpicker-event-hide').spectrum({
+            showInput: true,
+            hide: function(c) {
+                var label = $('.my-input');
+                var value=c.toHexString()
+                label.val(value);
+            }
+        });
+        
 
         // Show event
         $('.colorpicker-event-show').spectrum({

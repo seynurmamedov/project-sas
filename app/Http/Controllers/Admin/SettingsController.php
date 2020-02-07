@@ -31,7 +31,7 @@ class SettingsController extends Controller
                 'instagram'=>$request->get('instagram')
                 ]);
 	    
-   		 }
+   		}
    		 else{
             Settings::where(['id'=>1])->update([
                 'title'=>get('$request->title'),
@@ -43,7 +43,7 @@ class SettingsController extends Controller
                 'facebook'=>get('$request->facebook'),
                 'instagram'=>get('$request->instagram')
                 ]);
-		}
+		 }
         return $this->getSettings();
     }
 }

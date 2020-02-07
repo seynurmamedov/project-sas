@@ -90,14 +90,14 @@
         }
 
         return [
-            "<div class='sp-container sp-hidden'>",
+            "<div class='sp-container sp-hidden' style='z-index:2000'>",
                 "<div class='sp-palette-container'>",
                     "<div class='sp-palette sp-thumb sp-cf'></div>",
                     "<div class='sp-palette-button-container sp-cf'>",
                         "<button type='button' class='sp-palette-toggle'></button>",
                     "</div>",
                 "</div>",
-                "<div class='sp-picker-container'>",
+                "<div class='sp-picker-container' >",
                     "<div class='sp-top sp-cf'>",
                         "<div class='sp-fill'></div>",
                         "<div class='sp-top-inner'>",
@@ -118,7 +118,7 @@
                         "<div class='sp-alpha'><div class='sp-alpha-inner'><div class='sp-alpha-handle'></div></div></div>",
                     "</div>",
                     "<div class='sp-input-container sp-cf'>",
-                        "<input class='sp-input' type='text' spellcheck='false'  />",
+                        "<input class='sp-input' type='text' spellcheck='false'  >",
                     "</div>",
                     "<div class='sp-initial sp-thumb sp-cf'></div>",
                     "<div class='sp-button-container sp-cf'>",

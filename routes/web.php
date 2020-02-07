@@ -31,5 +31,8 @@ Route::get('/product', function () {
 });
 Route::get('/admin','Admin\HomeController@getHome')->name('getHomeAdmin');
 
-Route::get('/settings','Admin\SettingsController@getSettings')->name('getSettings');
-Route::post('/settings','Admin\SettingsController@postSettings');
+Route::get('admin/settings','Admin\SettingsController@getSettings')->name('getSettings');
+Route::post('admin/settings','Admin\SettingsController@postSettings');
+Route::get('admin/color','Admin\ColorController@getColor')->name('getColor');
+Route::post('admin/color','Admin\ColorController@postColor')->name('postColor');
+Route::get('admin/color/{id}','Admin\ColorController@getColorDelete')->name('getColorDelete');

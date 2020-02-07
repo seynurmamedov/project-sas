@@ -14,6 +14,8 @@
 	<link href="{{asset('assets/assets/css/layout.min.css')}}" rel="stylesheet" type="text/css">
 	<link href="{{asset('assets/assets/css/components.min.css')}}" rel="stylesheet" type="text/css">
 	<link href="{{asset('assets/assets/css/colors.min.css')}}" rel="stylesheet" type="text/css">
+	<link href="{{asset('assets/global_assets/css/icons/material/icons.css')}}" rel="stylesheet" type="text/css">
+
 	<!-- /global stylesheets -->
 
 	<!-- Core JS files -->
@@ -413,6 +415,14 @@
 								<i class="icon-home4"></i>
 								<span>
 									Home
+								</span>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="{{route('getColor')}}" class="nav-link">
+							<i class="mi-palette mr-3"></i>
+								<span>
+									Color Product Change
 								</span>
 							</a>
 						</li>
