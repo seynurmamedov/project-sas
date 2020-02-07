@@ -29,4 +29,5 @@ Route::get('/shop', function () {
 Route::get('/product', function () {
     return view('product-page');
 });
-Route::get('/admin','Admin\HomeController@getHome')->name('adminHome');
+Route::get('/admin','Admin\HomeController@getHome')->name('getHomeAdmin');
+Route::get('/settings','Admin\SettingsController@getSettings')->name('getSettings');

@@ -8,5 +8,8 @@ use App\Models\Settings;
 
 class SettingsController extends Controller
 {
+    public function getSettings(){
 
+        return view('admin.settings');
+    }
 }

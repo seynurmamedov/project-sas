@@ -409,10 +409,18 @@
 						<!-- Main -->
 						<li class="nav-item-header"><div class="text-uppercase font-size-xs line-height-xs">Main</div> <i class="icon-menu" title="Main"></i></li>
 						<li class="nav-item">
-							<a href="{{route('adminHome')}}" class="nav-link active">
+							<a href="{{route('getHomeAdmin')}}" class="nav-link">
 								<i class="icon-home4"></i>
 								<span>
 									Home
+								</span>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="{{route('getSettings')}}" class="nav-link">
+							<i class="icon-gear"></i>
+								<span>
+									Settings
 								</span>
 							</a>
 						</li>
