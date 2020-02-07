@@ -29,6 +29,4 @@ Route::get('/shop', function () {
 Route::get('/product', function () {
     return view('product-page');
 });
-Route::get('/admin', function () {
-    return view('admin.welcome');
-});
+Route::get('/admin','Admin\HomeController@getHome')->name('adminHome');
