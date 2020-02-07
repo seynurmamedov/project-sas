@@ -35,7 +35,7 @@
       </div>
       <div class="col-lg-4 col-md-4 col-sm-4 p-1 layout-item">
          <a href="#" class="overflow-hidden d-block w-100 ">
-            <img src="{{asset('img/collections-img-05.webp')}}" width="100%" height="100%"  alt="">
+            <img src="{{asset('img/collections-img-05.webp')}}" width="103.5%" height="100%"  alt="">
             <div class="position-absolute text-center layout-item-img-1">
                <p class="font-weight-bold" style="color:#fb5c42">10 PRODUCTS</p>
                <h3 class="font-weight-bold" style="color:black">Clothing</h3>
@@ -53,7 +53,7 @@
       </div>
       <div class="col-lg-4 col-md-4 col-sm-4 p-1  layout-item" >
          <a href="#" class="overflow-hidden d-block w-100 ">
-            <img src="{{asset('img/collections-img-06.webp')}}" width="100%" height="100%"   alt="">
+            <img src="{{asset('img/collections-img-06.webp')}}" width="103.5%" height="100%"   alt="">
             <div class="position-absolute text-center layout-item-img-1">
                <p  class="font-weight-bold" style="color:#fb5c42">10 PRODUCTS</p>
                <h3  class="font-weight-bold" style="color:black">Shoes</h3>
@@ -71,7 +71,7 @@
       </div>
       <div class="col-lg-4 col-md-4 col-sm-4 p-1  layout-item" >
          <a href="#" class="overflow-hidden d-block w-100 ">
-            <img src="{{asset('img/collections-img-07.webp')}}" width="100%" height="100%"   alt="">
+            <img src="{{asset('img/collections-img-07.webp')}}" width="103.5%" height="100%"   alt="">
             <div class="position-absolute text-center layout-item-img-1">
                <p  class="font-weight-bold" style="color:#fb5c42">8 PRODUCTS</p>
                <h3  class="font-weight-bold" style="color:black">Hat</h3>
@@ -80,7 +80,7 @@
       </div>
       <div class="col-lg-4 col-md-4 col-sm-4 p-1  layout-item" >
          <a href="#" class="overflow-hidden d-block w-100 ">
-            <img src="{{asset('img/collections-img-08.webp')}}" width="100%" height="100%"   alt="">
+            <img src="{{asset('img/collections-img-08.webp')}}" width="103.5%" height="100%"   alt="">
             <div class="position-absolute text-center layout-item-img-1">
                <p  class="font-weight-bold" style="color:#fb5c42">8 PRODUCTS</p>
                <h3  class="font-weight-bold" style="color:black">T-Shirt</h3>
