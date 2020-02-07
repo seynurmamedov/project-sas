@@ -30,4 +30,6 @@ Route::get('/product', function () {
     return view('product-page');
 });
 Route::get('/admin','Admin\HomeController@getHome')->name('getHomeAdmin');
+
 Route::get('/settings','Admin\SettingsController@getSettings')->name('getSettings');
+Route::post('/settings','Admin\SettingsController@postSettings');

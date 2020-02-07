@@ -16,7 +16,7 @@
 <!-- Basic layout-->
 <div class="card">
 	<div class="card-header header-elements-inline">
-		<h5 class="card-title">Basic layout</h5>
+		<h5 class="card-title">Settings</h5>
 		<div class="header-elements">
 			<div class="list-icons">
 				<a class="list-icons-item" data-action="collapse"></a>
@@ -27,114 +27,75 @@
 	</div>
 
 	<div class="card-body">
-		<form action="#">
+		<form action="#" method="post" enctype="multipart/form-data">
+		@csrf
+		<div class="form-group row">
+		<label class="col-lg-3 col-form-label">Old Logo:</label>
+			<div class="mr-3">
+				<a href="#">
+					<img src="{{asset('img/'.$settings->logo.'')}}" width="160" height="160" class="rounded-round" alt="">
+				</a>
+			</div>
+		</div>
 			<div class="form-group row">
-				<label class="col-lg-3 col-form-label">Name:</label>
+				<label class="col-lg-3 col-form-label">Change:</label>
 				<div class="col-lg-9">
-					<input type="text" class="form-control" placeholder="Eugene Kopyov">
+					<input type="file" class="form-input-styled" name="logo">
+					<span class="form-text text-muted">Accepted formats: png, jpg. Max file size 2Mb</span>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-lg-3 col-form-label">Site title:</label>
+				<div class="col-lg-9">
+					<input type="text" class="form-control" value="{{$settings->title}} " name="title">
 				</div>
 			</div>
 
 			<div class="form-group row">
-				<label class="col-lg-3 col-form-label">Password:</label>
+				<label class="col-lg-3 col-form-label">Key Words:</label>
 				<div class="col-lg-9">
-					<input type="password" class="form-control" placeholder="Your strong password">
+					<input type="text" class="form-control" value="{{$settings->keywords}}" name="keyword">
 				</div>
 			</div>
-
 			<div class="form-group row">
-				<label class="col-lg-3 col-form-label">Your state:</label>
+				<label class="col-lg-3 col-form-label">Phone 1:</label>
 				<div class="col-lg-9">
-					<select class="form-control form-control-select2" data-fouc>
-						<optgroup label="Alaskan/Hawaiian Time Zone">
-							<option value="AK">Alaska</option>
-							<option value="HI">Hawaii</option>
-						</optgroup>
-						<optgroup label="Pacific Time Zone">
-							<option value="CA">California</option>
-							<option value="NV">Nevada</option>
-							<option value="WA">Washington</option>
-						</optgroup>
-						<optgroup label="Mountain Time Zone">
-							<option value="AZ">Arizona</option>
-							<option value="CO">Colorado</option>
-							<option value="WY">Wyoming</option>
-						</optgroup>
-						<optgroup label="Central Time Zone">
-							<option value="AL">Alabama</option>
-							<option value="AR">Arkansas</option>
-							<option value="KY">Kentucky</option>
-						</optgroup>
-						<optgroup label="Eastern Time Zone">
-							<option value="CT">Connecticut</option>
-							<option value="DE">Delaware</option>
-							<option value="FL">Florida</option>
-						</optgroup>
-					</select>
+					<input type="text" class="form-control" value="{{$settings->phone1}}" name="phone1">
 				</div>
 			</div>
-
 			<div class="form-group row">
-				<label class="col-lg-3 col-form-label">Gender:</label>
+				<label class="col-lg-3 col-form-label">Phone 2:</label>
 				<div class="col-lg-9">
-					<div class="form-check form-check-inline">
-						<label class="form-check-label">
-							<input type="radio" class="form-input-styled" name="gender" checked data-fouc>
-							Male
-						</label>
-					</div>
-
-					<div class="form-check form-check-inline">
-						<label class="form-check-label">
-							<input type="radio" class="form-input-styled" name="gender" data-fouc>
-							Female
-						</label>
-					</div>
+					<input type="text" class="form-control" value="{{$settings->phone2}}" name="phone2">
 				</div>
 			</div>
-
 			<div class="form-group row">
-				<label class="col-lg-3 col-form-label">Your avatar:</label>
+				<label class="col-lg-3 col-form-label">Address:</label>
 				<div class="col-lg-9">
-					<input type="file" class="form-input-styled" data-fouc>
-					<span class="form-text text-muted">Accepted formats: gif, png, jpg. Max file size 2Mb</span>
+					<input type="text" class="form-control" value="{{$settings->address}}" name="address">
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-lg-3 col-form-label">E-mail:</label>
+				<div class="col-lg-9">
+					<input type="email" class="form-control" value="{{$settings->email}}" name="email">
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-lg-3 col-form-label">Instagram:</label>
+				<div class="col-lg-9">
+					<input type="text" class="form-control" value="{{$settings->instagram}}" name="instagram">
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-lg-3 col-form-label">Facebook:</label>
+				<div class="col-lg-9">
+					<input type="text" class="form-control" value="{{$settings->facebook}}" name="facebook">
 				</div>
 			</div>
 
-			<div class="form-group row">
-				<label class="col-lg-3 col-form-label">Tags:</label>
-				<div class="col-lg-9">
-					<select multiple="multiple" data-placeholder="Enter tags" class="form-control form-control-select2-icons" data-fouc>
-						<optgroup label="Services">
-							<option value="wordpress2" data-icon="wordpress2">Wordpress</option>
-							<option value="tumblr2" data-icon="tumblr2">Tumblr</option>
-							<option value="stumbleupon" data-icon="stumbleupon">Stumble upon</option>
-							<option value="pinterest2" data-icon="pinterest2">Pinterest</option>
-							<option value="lastfm2" data-icon="lastfm2">Lastfm</option>
-						</optgroup>
-						<optgroup label="File types">
-							<option value="pdf" data-icon="file-pdf">PDF</option>
-							<option value="word" data-icon="file-word">Word</option>
-							<option value="excel" data-icon="file-excel">Excel</option>
-							<option value="openoffice" data-icon="file-openoffice">Open office</option>
-						</optgroup>
-						<optgroup label="Browsers">
-							<option value="chrome" data-icon="chrome" selected>Chrome</option>
-							<option value="firefox" data-icon="firefox" selected>Firefox</option>
-							<option value="safari" data-icon="safari">Safari</option>
-							<option value="opera" data-icon="opera">Opera</option>
-							<option value="IE" data-icon="IE">IE</option>
-						</optgroup>
-					</select>
-				</div>
-			</div>
 
-			<div class="form-group row">
-				<label class="col-lg-3 col-form-label">Your message:</label>
-				<div class="col-lg-9">
-					<textarea rows="5" cols="5" class="form-control" placeholder="Enter your message here"></textarea>
-				</div>
-			</div>
+
 
 			<div class="text-right">
 				<button type="submit" class="btn btn-primary">Submit form <i class="icon-paperplane ml-2"></i></button>
