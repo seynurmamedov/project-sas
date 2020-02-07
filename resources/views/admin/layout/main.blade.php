@@ -29,10 +29,10 @@
 	<script src="{{asset('assets/global_assets/js/plugins/forms/selects/bootstrap_multiselect.js')}}"></script>
 	<script src="{{asset('assets/global_assets/js/plugins/ui/moment/moment.min.js')}}"></script>
 	<script src="{{asset('assets/global_assets/js/plugins/pickers/daterangepicker.js')}}"></script>
-
 	<script src="{{asset('assets/assets/js/app.js')}}"></script>
 	<script src="{{asset('assets/global_assets/js/demo_pages/dashboard.js')}}"></script>
 	<!-- /theme JS files -->
+	@yield('head')
 
 </head>
 
