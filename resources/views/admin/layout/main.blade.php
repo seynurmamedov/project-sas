@@ -30,7 +30,7 @@
 	<script src="{{asset('assets/global_assets/js/plugins/ui/moment/moment.min.js')}}"></script>
 	<script src="{{asset('assets/global_assets/js/plugins/pickers/daterangepicker.js')}}"></script>
 
-	<script src="assets/js/app.js')}}"></script>
+	<script src="{{asset('assets/assets/js/app.js')}}"></script>
 	<script src="{{asset('assets/global_assets/js/demo_pages/dashboard.js')}}"></script>
 	<!-- /theme JS files -->
 
@@ -412,7 +412,7 @@
 							<a href="index.html" class="nav-link active">
 								<i class="icon-home4"></i>
 								<span>
-									Dashboard
+									Home
 								</span>
 							</a>
 						</li>
@@ -421,11 +421,6 @@
 
 							<ul class="nav nav-group-sub" data-submenu-title="Layouts">
 								<li class="nav-item"><a href="index.html" class="nav-link active">Default layout</a></li>
-								<li class="nav-item"><a href="../../../../layout_2/LTR/default/full/index.html" class="nav-link">Layout 2</a></li>
-								<li class="nav-item"><a href="../../../../layout_3/LTR/default/full/index.html" class="nav-link">Layout 3</a></li>
-								<li class="nav-item"><a href="../../../../layout_4/LTR/default/full/index.html" class="nav-link">Layout 4</a></li>
-								<li class="nav-item"><a href="../../../../layout_5/LTR/default/full/index.html" class="nav-link">Layout 5</a></li>
-								<li class="nav-item"><a href="../../../../layout_6/LTR/default/full/index.html" class="nav-link disabled">Layout 6 <span class="badge bg-transparent align-self-center ml-auto">Coming soon</span></a></li>
 							</ul>
 						</li>
 
