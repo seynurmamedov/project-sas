@@ -9,7 +9,7 @@ use App\Models\Color;
 class ColorController extends Controller
 {
     public function getColor(){
-        $results = Color::get();
+        $results = Color::where(['is_delete'=>0])->get();
         return view('admin.color',['results'=>$results]);
     }
     public function postColor(Request $request){
@@ -32,7 +32,10 @@ class ColorController extends Controller
         return redirect()->route('getColor');
     }
     public function getColorDelete($id){
-        Color::where(['id'=>$id])->delete();
+        Color::where(['id'=>$id])->update([
+            'is_delete'=>1
+        ]);
         return redirect()->route('getColor');
     }
 }
+

@@ -221,7 +221,6 @@ var ColorPicker = function() {
             }
         });
         $('.my-colorpicker-event-hide').spectrum({
-            showInput: true,
             hide: function(c) {
                 var label = $('.my-input');
                 var value=c.toHexString()
