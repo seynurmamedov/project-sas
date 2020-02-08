@@ -34,14 +34,14 @@ class SettingsController extends Controller
    		}
    		 else{
             Settings::where(['id'=>1])->update([
-                'title'=>get('$request->title'),
-                'keywords'=>get('$request->keyword'),
-                'phone1'=>get('$request->phone1'),
-                'phone2'=>get('$request->phone2'),
-                'email'=>get('$request->email'),
-                'address'=>get('$request->address'),
-                'facebook'=>get('$request->facebook'),
-                'instagram'=>get('$request->instagram')
+                'title'=>$request->get('title'),
+                'keywords'=>$request->get('keyword'),
+                'phone1'=>$request->get('phone1'),
+                'phone2'=>$request->get('phone2'),
+                'email'=>$request->get('email'),
+                'address'=>$request->get('address'),
+                'facebook'=>$request->get('facebook'),
+                'instagram'=>$request->get('instagram')
                 ]);
 		 }
         return $this->getSettings();
