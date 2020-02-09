@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Color;
+use App\Http\Requests\ColorRequest;
+use Illuminate\Support\Facades\Session;
 
 class ColorController extends Controller
 {
@@ -12,7 +14,7 @@ class ColorController extends Controller
         $results = Color::where(['is_delete'=>0])->get();
         return view('admin.color',['results'=>$results]);
     }
-    public function postColor(Request $request){
+    public function postColor(ColorRequest $request){
         $request->request->remove('_token');
         if($request->get('id')){
             Color::where(['id'=>$request->get('id')])->
@@ -28,6 +30,7 @@ class ColorController extends Controller
             'code'=>$request->get('code'),
             'is_active'=>$request->get('is_active')
             ]);
+            session()->put('success-message','Added to the database.');
         }
         return redirect()->route('getColor');
     }

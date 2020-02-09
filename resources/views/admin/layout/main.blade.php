@@ -360,19 +360,27 @@
                         </span>
                         </a>
                      </li>
-                      <li class="nav-item">
-                        <a href="{{route('getColor')}}" class="nav-link">
-                        <i class="mi-palette mr-3"></i>
+                     <li class="nav-item">
+                        <a href="{{route('getProduct')}}" class="nav-link">
+                        <i class="mi-folder-open mr-3"></i>
                         <span>
-                        Category Change
+                        Product 
+                        </span>
+                        </a>
+                     </li>
+                      <li class="nav-item">
+                        <a href="{{route('getCategory')}}" class="nav-link">
+                        <i class="mi-folder-open mr-3"></i>
+                        <span>
+                        Product Category 
                         </span>
                         </a>
                      </li>
                      <li class="nav-item">
-                        <a href="{{route('getCategory')}}" class="nav-link">
+                        <a href="{{route('getColor')}}" class="nav-link">
                         <i class="mi-palette mr-3"></i>
                         <span>
-                        Color Product Change
+                        Product Color  
                         </span>
                         </a>
                      </li>

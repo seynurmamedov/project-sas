@@ -17,24 +17,38 @@
    <!-- Basic datatable -->
    <div class="card col-12">
       <div class="card-header header-elements-inline">
-         <h5 class="card-title">Color Change</h5>
+         <h5 class="card-title">Color</h5>
+         @if(Session::has('success-message'))
+            <h2 style="color: green">
+            		{{ Session::get('success-message') }}
+            		@php Session::forget('success-message'); @endphp
+          	</h2>
+         @endif
          <div class="header-elements">
             <button type="button" class="btn btn-primary text-center" data-toggle="modal" data-target="#insert">
                <h6 class="mb-0">Add New Color <i class="mi-insert-drive-file ml-1 "></i></h6>
             </button>
          </div>
       </div>
-      <div id="insert" class="modal fade" tabindex="-1" style="display: none;" aria-hidden="true">
+      <div id="insert" class="modal fade @if ($errors->any()) show @endif" tabindex="-1" style="@if ($errors->any()) display: block; padding-right: 17px; @else display: none;@endif " aria-hidden="true">
          <div class="modal-dialog">
             <div class="modal-content">
                <div class="modal-header">
-                  <h5 class="modal-title">Change Color </h5>
+                  <h5 class="modal-title">Add Color </h5>
                   <button type="button" class="close" data-dismiss="modal">×</button>
                </div>
                <form action="#" method="post">
                   @csrf
                   <input name="id" type="text" class="d-none">
                   <div class="modal-body">
+                     <div class="form-group col-5 p-0">
+                        @if ($errors->any())
+                           @foreach ($errors->all() as $error)
+                              <p class="h5" style="color: #BD2130">{{ $error }}</p>
+                           @endforeach
+                        @endif
+                     </div>
+
                      <div class="form-group col-5 p-0">
                         <label>Color Name</label>
                         <input name="name" type="text" class="form-control">
@@ -43,7 +57,7 @@
                         <label class="d-block">Color code</label>
                         <div class="d-flex">
                            <input type="text"  class="form-control my-colorpicker-event-hide " data-preferred-format="HLS" data-fouc="" style="display: none;">
-                           <input type="text" name="code" class=" ml-1 col-3 form-control my-input" value="black">
+                           <input type="text" name="code" class=" ml-1 col-3 form-control my-input" value="">
                         </div>
                      </div>
                      <div class="form-group">
@@ -127,8 +141,8 @@
                            <div class="form-group">
                               <label class="d-block">Status</label>
                               <select name="is_active" class="form-control select-fixed-single select2-hidden-accessible"  tabindex="-1" aria-hidden="true">
-                                 <option value="1">Active</option>
-                                 <option value="0">Inactive</option>
+                              <option @if($result->is_active==1) selected @endif  value="1">Active</option>
+                              <option @if($result->is_active==0) selected  @endif  value="0">Inactive</option>
                               </select>
                            </div>
                         </div>
@@ -145,7 +159,9 @@
          </tbody>
       </table>
    </div>
-   <!-- /basic datatable -->    
+   <!-- /basic datatable -->   
+   @if ($errors->any())    <div class="modal-backdrop fade show"></div>  @endif
+
 </div>
 <!-- /dashboard content -->
 @endsection

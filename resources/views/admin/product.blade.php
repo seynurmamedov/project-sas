@@ -17,20 +17,14 @@
    <!-- Basic datatable -->
    <div class="card col-12">
       <div class="card-header header-elements-inline">
-         <h5 class="card-title">Category</h5>
-         @if(Session::has('success-message'))
-            <h2 style="color: green">
-            		{{ Session::get('success-message') }}
-            		@php Session::forget('success-message'); @endphp
-          	</h2>
-         @endif
+         <h5 class="card-title">Category Change</h5>
          <div class="header-elements">
             <button type="button" class="btn btn-primary text-center" data-toggle="modal" data-target="#insert">
                <h6 class="mb-0">Add New Category <i class="mi-insert-drive-file ml-1 "></i></h6>
             </button>
          </div>
       </div>
-      <div id="insert" class="modal fade @if ($errors->any()) show @endif" tabindex="-1" style="@if ($errors->any()) display: block; padding-right: 17px; @else display: none;@endif " aria-hidden="true">
+      <div id="insert" class="modal fade" tabindex="-1" style="display: none;" aria-hidden="true">
          <div class="modal-dialog">
             <div class="modal-content">
                <div class="modal-header">
@@ -39,15 +33,8 @@
                </div>
                <form action="#" method="post">
                   @csrf
-                  <input name="id" type="text" class="d-none">                  
+                  <input name="id" type="text" class="d-none">
                   <div class="modal-body">
-                     <div class="form-group col-5 p-0">
-                        @if ($errors->any())
-                           @foreach ($errors->all() as $error)
-                              <p class="h5" style="color: #BD2130">{{ $error }}</p>
-                           @endforeach
-                        @endif
-                     </div>
                      <div class="form-group col-5 p-0">
                         <label>Category Name</label>
                         <input name="name" type="text" class="form-control">
@@ -71,7 +58,11 @@
       <table class="table datatable-basic">
          <thead>
             <tr>
-               <th>Category Name</th>
+            <th>Title</th>
+               <th>Price</th>
+               <th>Stock</th>
+               <th>Category</th>
+               <th>Gender</th>
                <th>Status</th>
                <th class="text-center">Actions</th>
             </tr>
@@ -79,7 +70,11 @@
          <tbody>
             @foreach ($results as $result) 
             <tr>
-               <td>{{$result->name}}</td>
+               <td>{{$result->title}}</td>
+               <td>{{$result->price}}</td>
+               <td>{{$result->stock}}</td>
+               <td>{{$result->cat_id}}</td>
+               <td>{{$result->gender_id}}</td>
                @if ($result->is_active == 1)
                <td><span class="badge badge-success">Active</span></td>
                @else
@@ -135,7 +130,6 @@
          </tbody>
       </table>
    </div>
-   @if ($errors->any())    <div class="modal-backdrop fade show"></div>  @endif
    <!-- /basic datatable -->    
 </div>
 <!-- /dashboard content -->
