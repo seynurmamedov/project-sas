@@ -36,3 +36,5 @@ Route::post('admin/settings','Admin\SettingsController@postSettings');
 Route::get('admin/color','Admin\ColorController@getColor')->name('getColor');
 Route::post('admin/color','Admin\ColorController@postColor')->name('postColor');
 Route::get('admin/color/{id}','Admin\ColorController@getColorDelete')->name('getColorDelete');
+
+Route::get('admin/category', 'Admin\CategoryController@getCategory')->name('getCategory');
