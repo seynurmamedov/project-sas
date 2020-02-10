@@ -24,7 +24,6 @@ class CategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            
             'name' => 'required|string',
             'is_active' => 'required|boolean'
         ];

@@ -6,6 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Size extends Model
 {
-    protected $table='color'; 
+    protected $table='size'; 
     protected $guarded=[]; 
 }

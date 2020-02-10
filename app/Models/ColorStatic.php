@@ -4,8 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Gender extends Model
+class ColorStatic extends Model
 {
-    protected $table='gender'; 
+    protected $table='color_static'; 
     protected $guarded=[]; 
 }

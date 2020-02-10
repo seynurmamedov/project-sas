@@ -29,19 +29,24 @@ Route::get('/shop', function () {
 Route::get('/product', function () {
     return view('product-page');
 });
+
+
 Route::get('/admin','Admin\HomeController@getHome')->name('getHomeAdmin');
 
 Route::get('admin/settings','Admin\SettingsController@getSettings')->name('getSettings');
 Route::post('admin/settings','Admin\SettingsController@postSettings');
 
 Route::get('admin/color','Admin\ColorController@getColor')->name('getColor');
-Route::post('admin/color','Admin\ColorController@postColor')->name('postColor');
+Route::post('admin/color','Admin\ColorController@postColor');
 Route::get('admin/color/{id}','Admin\ColorController@getColorDelete')->name('getColorDelete');
 
 Route::get('admin/category', 'Admin\CategoryController@getCategory')->name('getCategory');
-Route::post('admin/category', 'Admin\CategoryController@postCategory')->name('postCategory');
+Route::post('admin/category', 'Admin\CategoryController@postCategory');
 Route::get('admin/category/{id}', 'Admin\CategoryController@getCategoryDelete')->name('getCategoryDelete');
 
 
 Route::get('admin/product', 'Admin\ProductController@getProduct')->name('getProduct');
+Route::get('admin/product/insert','Admin\ProductController@getInsertProduct')->name('getInsertProduct');
+Route::post('admin/product/insert','Admin\ProductController@postInsertProduct');
+// Route::get('admin/product/edit/{id}', 'Admin\ProductController@getInsertProduct')->name('getEditProduct');
 

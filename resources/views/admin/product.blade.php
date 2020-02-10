@@ -12,53 +12,22 @@
 <script src="{{asset('assets/global_assets/js/plugins/forms/styling/switchery.min.js')}}"></script>
 @endsection
 @section('content')
-<!-- Main charts -->
 <div class="row">
-   <!-- Basic datatable -->
    <div class="card col-12">
       <div class="card-header header-elements-inline">
-         <h5 class="card-title">Category Change</h5>
+         <h5 class="card-title">Product</h5>
          <div class="header-elements">
-            <button type="button" class="btn btn-primary text-center" data-toggle="modal" data-target="#insert">
-               <h6 class="mb-0">Add New Category <i class="mi-insert-drive-file ml-1 "></i></h6>
-            </button>
-         </div>
-      </div>
-      <div id="insert" class="modal fade" tabindex="-1" style="display: none;" aria-hidden="true">
-         <div class="modal-dialog">
-            <div class="modal-content">
-               <div class="modal-header">
-                  <h5 class="modal-title">Add Category </h5>
-                  <button type="button" class="close" data-dismiss="modal">×</button>
-               </div>
-               <form action="#" method="post">
-                  @csrf
-                  <input name="id" type="text" class="d-none">
-                  <div class="modal-body">
-                     <div class="form-group col-5 p-0">
-                        <label>Category Name</label>
-                        <input name="name" type="text" class="form-control">
-                     </div>
-                     <div class="form-group">
-                        <label class="d-block">Status</label>
-                        <select name="is_active" class="form-control select-fixed-single select2-hidden-accessible"  tabindex="-1" aria-hidden="true">
-                           <option value="1">Active</option>
-                           <option value="0">Inactive</option>
-                        </select>
-                     </div>
-                  </div>
-                  <div class="modal-footer">
-                     <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
-                     <button type="submit" class="btn bg-primary">Save</button>
-                  </div>
-               </form>
-            </div>
+            <a href="{{route('getInsertProduct')}}">
+               <button type="button" class="btn btn-primary text-center">
+                  <h6 class="mb-0">Add New Product <i class="mi-insert-drive-file ml-1 "></i></h6>
+               </button>
+            </a>
          </div>
       </div>
       <table class="table datatable-basic">
          <thead>
             <tr>
-            <th>Title</th>
+               <th>Title</th>
                <th>Price</th>
                <th>Stock</th>
                <th>Category</th>
@@ -69,68 +38,34 @@
          </thead>
          <tbody>
             @foreach ($results as $result) 
-            <tr>
-               <td>{{$result->title}}</td>
-               <td>{{$result->price}}</td>
-               <td>{{$result->stock}}</td>
-               <td>{{$result->cat_id}}</td>
-               <td>{{$result->gender_id}}</td>
-               @if ($result->is_active == 1)
-               <td><span class="badge badge-success">Active</span></td>
-               @else
-               <td><span class="badge badge-danger">Inactive</span></td>
-               @endif
-               <td class="text-center">
-                  <div class="list-icons">
-                     <div class="dropdown">
-                        <a href="#" class="list-icons-item" data-toggle="dropdown">
-                        <i class="icon-menu9"></i>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                           <p class="dropdown-item "><button type="button" class="w-100 h-100 text-left" style="background-color:transparent; border:none; outline:none;"  data-toggle="modal" data-target="#{{$result->id}}"><i class="mi-mode-edit mr-2"></i>Edit</button></p>
-                           <a href="{{route('getCategoryDelete', ['id' => $result->id])}}" class="dropdown-item "><button type="button" style="background-color:transparent; border:none; outline:none;" ><i class="mi-delete mr-2"></i>Delete</button></a>
-                        </div>
-                     </div>
-                  </div>
-               </td>
-            </tr>
-            <div id="{{$result->id}}" class="modal fade" tabindex="-1" style="display: none;" aria-hidden="true">
-               <div class="modal-dialog">
-                  <div class="modal-content">
-                     <div class="modal-header">
-                        <h5 class="modal-title">Change Category </h5>
-                        <button type="button" class="close" data-dismiss="modal">×</button>
-                     </div>
-                     <form action="#" method="post">
-                        @csrf
-                        <input name="id" type="text" class="d-none" value="{{$result->id}}">
-                        <div class="modal-body">
-                           <div class="form-group col-5 p-0">
-                              <label>Category Name</label>
-                              <input name="name" type="text" class="form-control" value="{{$result->name}}">
-                           </div>
-                           <div class="form-group">
-                              <label class="d-block">Status</label>
-                              <select name="is_active" class="form-control select-fixed-single select2-hidden-accessible"  tabindex="-1" aria-hidden="true">
-                                 <option value="1">Active</option>
-                                 <option value="0">Inactive</option>
-                              </select>
+               <tr>
+                  <td>{{$result->title}}</td>
+                  <td>{{$result->price}}</td>
+                  <td>{{$result->stock}}</td>
+                  <td>{{$result->Category->name}}</td>
+                  <td>{{$result->Gender->name}}</td>
+                  @if ($result->is_active == 1)
+                  <td><span class="badge badge-success">Active</span></td>
+                  @else
+                  <td><span class="badge badge-danger">Inactive</span></td>
+                  @endif
+                  <td class="text-center">
+                     <div class="list-icons">
+                        <div class="dropdown">
+                           <a href="#" class="list-icons-item" data-toggle="dropdown">
+                              <i class="icon-menu9"></i>
+                           </a>
+                           <div class="dropdown-menu dropdown-menu-right">
+                              <p class="dropdown-item "><button type="button" class="w-100 h-100 text-left" style="background-color:transparent; border:none; outline:none;"  data-toggle="modal" data-target="#{{$result->id}}"><i class="mi-mode-edit mr-2"></i>Edit</button></p>
+                              <a href="{{route('getCategoryDelete', ['id' => $result->id])}}" class="dropdown-item "><button type="button" style="background-color:transparent; border:none; outline:none;" ><i class="mi-delete mr-2"></i>Delete</button></a>
                            </div>
                         </div>
-                        <div class="modal-footer">
-                           <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
-                           <button type="submit" class="btn bg-primary">Save</button>
-                        </div>
-                     </form>
-                  </div>
-               </div>
-            </div>
+                     </div>
+                  </td>
+               </tr>
             @endforeach
-            </tr>
          </tbody>
       </table>
-   </div>
-   <!-- /basic datatable -->    
+   </div>   
 </div>
-<!-- /dashboard content -->
 @endsection

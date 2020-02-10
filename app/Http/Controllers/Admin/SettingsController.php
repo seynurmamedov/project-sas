@@ -12,11 +12,12 @@ class SettingsController extends Controller
         $settings = Settings::where('id',1)->first();
         return view('admin.settings',['settings'=>$settings]);
     }
+
     public function postSettings(Request $request){
         $request->request->remove('_token');
         $file = $request->file('logo');
    		 if ($file) {
-   		 	$destinationPath = 'img/';
+   		 	$destinationPath = 'img/uploads';
 		    $newurl =str_random(16).'.'.$file->getClientOriginalExtension();
 		    $file->move($destinationPath,$newurl);
             Settings::where(['id'=>1])->update([
@@ -29,9 +30,9 @@ class SettingsController extends Controller
                 'address'=>$request->get('address'),
                 'facebook'=>$request->get('facebook'),
                 'instagram'=>$request->get('instagram')
-                ]);
+            ]);
 	    
-   		}
+   		 }
    		 else{
             Settings::where(['id'=>1])->update([
                 'title'=>$request->get('title'),
@@ -42,7 +43,7 @@ class SettingsController extends Controller
                 'address'=>$request->get('address'),
                 'facebook'=>$request->get('facebook'),
                 'instagram'=>$request->get('instagram')
-                ]);
+            ]);
 		 }
         return $this->getSettings();
     }
