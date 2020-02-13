@@ -1,4 +1,5 @@
-@extends('layout.app') @section('head')
+@extends('site.layout.app') 
+@section('head')
 <link rel="stylesheet" href="{{asset('css\home-page.css')}}"> @endsection @section('content')
 <div class="myW-100">a</div>
 <div class="container">

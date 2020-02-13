@@ -191,7 +191,7 @@
                   <i class="fas fa-bars fa-lg "></i>
                </div>
                <div class="pt-5 pb-4 logo">
-                  <a class="nav-link pl-0" href="home">
+                  <a class="nav-link pl-0" href="{{ url('/') }}">
                      <h2> 
                         Capie<span class="color-orange">.</span>
                      </h2>
@@ -220,22 +220,19 @@
                <nav class="navbar pr-0 pl-0  " id="navbar">
                   <ul class="navbar-nav w-100 pb-5 red-border ">
                      <li class="nav-item">
-                        <a class="nav-link " href="home"> Home</a>
+                        <a class="nav-link " href="{{route('getHome')}}"> Home</a>
                      </li>
                      <li class="nav-item">
-                        <a class="nav-link " href="collection"> Collection</a>
+                        <a class="nav-link " href="{{route('getCollection')}}"> Collection</a>
                      </li>
                      <li class="nav-item">
-                        <a class="nav-link " href="shop"> Shop</a>
+                        <a class="nav-link " href="{{route('getShop')}}"> Shop</a>
                      </li>
                      <li class="nav-item">
-                        <a class="nav-link " href="about"> About</a>
-                     </li>
-                     <li class="nav-item">
-                        <a class="nav-link " href="blog"> Blog</a>
+                        <a class="nav-link " href="{{route('getAbout')}}"> About</a>
                      </li>
                      <li class="nav-item pb-5 mb-5">
-                        <a class="nav-link " href="contact-us"> Contact Us</a>
+                        <a class="nav-link " href="{{route('getContactUs')}}"> Contact Us</a>
                      </li>
                      <div class="dropdown my-dropdown">
                         <li class="">
@@ -243,12 +240,32 @@
                         </li>
                         <div class="dropdown-content my-dropdown-content">
                            <ul>
-                              <li>
-                                 <a class="nav-link" href="">Sign In</a>
-                              </li>
-                              <li>
-                                 <a class="nav-link" href="">Register</a>
-                              </li>
+                              @guest
+                                 <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                 </li>
+                                 @if (Route::has('register'))
+                                 <li class="nav-item">
+                                       <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                 </li>
+                                 @endif
+                                 @else
+                                    <li class="nav-item">
+                                       <a class="nav-link " href="#" role="button">
+                                           {{ Auth::user()->name }} <span class="caret"></span>
+                                       </a>
+                                    </li>
+                                    <li>
+                                       <a class="nav-link" href="{{ route('logout') }}"
+                                          onclick="event.preventDefault();
+                                          document.getElementById('logout-form').submit();">
+                                          {{ __('Logout') }}
+                                       </a>
+                                       <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                       @csrf
+                                    </form>
+                                    </li>
+                              @endguest
                            </ul>
                         </div>
                      </div>
@@ -359,7 +376,7 @@
                      <div class="row justify-content-between">
                         <div class="col-lg-3 px-2">
                            <div class="logo">
-                              <a class="nav-link p-0" href="home">
+                              <a class="nav-link p-0" href="{{ url('/') }}">
                                  <h2 class="p-0"> 
                                     Capie<span class="color-orange">.</span>
                                  </h2>

@@ -12,26 +12,26 @@
 */
 
 Route::get('/home', function () {
-    return view('home-page');
-});
+    return view('site.home-page');
+})->name('getHome');
 Route::get('/', function () {
-    return view('home-page');
+    return view('site.home-page');
 });
 Route::get('/collection', function () {
-    return view('collection-page');
-});
+    return view('site.collection-page');
+})->name('getCollection');
 Route::get('/about', function () {
-    return view('about-page');
-});
+    return view('site.about-page');
+})->name('getAbout');
 Route::get('/contact-us', function () {
-    return view('contact-us-page');
-});
+    return view('site.contact-us-page');
+})->name('getContactUs');
 Route::get('/shop', function () {
-    return view('shop-page');
-});
+    return view('site.shop-page');
+})->name('getShop');
 Route::get('/product', function () {
-    return view('product-page');
-});
+    return view('site.product-page');
+})->name('getProduct');
 
 Route::middleware(['auth','auth.admin'])->group(function () {
     Route::get('/admin','Admin\HomeController@getHome')->name('getHomeAdmin');
@@ -80,4 +80,3 @@ Route::middleware(['auth','auth.admin'])->group(function () {
 });
 Auth::routes();
 
-Route::get('/homee', 'HomeController@index')->name('home');

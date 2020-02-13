@@ -1,4 +1,4 @@
-@extends('layout.app') 
+@extends('site.layout.app') 
 @section('head')
 <link rel="stylesheet" href="{{asset('css\contact-us-page.css')}}">
 @endsection
