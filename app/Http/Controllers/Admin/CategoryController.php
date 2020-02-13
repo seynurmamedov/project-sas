@@ -29,7 +29,7 @@ class CategoryController extends Controller
                 'name'=>$request->get('name'),
                 'is_active'=>$request->get('is_active')
             ]);
-            session()->put('success-message','Added to the database.');
+            session()->put('success-message','');
         }
         return redirect()->route('getCategory');
     }

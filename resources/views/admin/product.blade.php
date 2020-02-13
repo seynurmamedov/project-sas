@@ -11,6 +11,7 @@
 <script src="{{asset('assets/global_assets/js/plugins/pickers/color/spectrum.js')}}"></script>
 <script src="{{asset('assets/global_assets/js/plugins/forms/styling/switchery.min.js')}}"></script>
 @endsection
+@section('page-name') Product @endsection
 @section('content')
 <div class="row">
    <div class="card col-12">
@@ -38,7 +39,7 @@
          </thead>
          <tbody>
             @foreach ($results as $result) 
-               <tr>
+               <tr class="text-capitalize">
                   <td>{{$result->title}}</td>
                   <td>{{$result->price}}</td>
                   <td>{{$result->stock}}</td>
@@ -56,8 +57,8 @@
                               <i class="icon-menu9"></i>
                            </a>
                            <div class="dropdown-menu dropdown-menu-right">
-                              <p class="dropdown-item "><button type="button" class="w-100 h-100 text-left" style="background-color:transparent; border:none; outline:none;"  data-toggle="modal" data-target="#{{$result->id}}"><i class="mi-mode-edit mr-2"></i>Edit</button></p>
-                              <a href="{{route('getCategoryDelete', ['id' => $result->id])}}" class="dropdown-item "><button type="button" style="background-color:transparent; border:none; outline:none;" ><i class="mi-delete mr-2"></i>Delete</button></a>
+                              <a href="{{route('getEditProduct', ['id' => $result->id])}}" class="dropdown-item "><button type="button" style="background-color:transparent; border:none; outline:none;" ><i class="mi-mode-edit mr-2"></i>Edit</button></a>
+                              <a href="{{route('getDeleteProduct', ['id' => $result->id])}}" class="dropdown-item "><button id="delete" data-id="{{$result->id}}" type="button" style="background-color:transparent; border:none; outline:none;" ><i class="mi-delete mr-2"></i>Delete</button></a>
                            </div>
                         </div>
                      </div>
@@ -68,4 +69,5 @@
       </table>
    </div>   
 </div>
+
 @endsection

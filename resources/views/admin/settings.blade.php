@@ -4,6 +4,7 @@
 <script src="{{asset('assets/global_assets/js/plugins/forms/styling/uniform.min.js')}}"></script>
 <script src="{{asset('assets/global_assets/js/demo_pages/form_layouts.js')}}"></script>
 @endsection
+@section('page-name') Site Settings  @endsection
 @section('content')
     <div class="row">
 		<div class="col-12">
@@ -18,7 +19,7 @@
 							<label class="col-lg-3 col-form-label">Old Logo:</label>
 							<div class="mr-3">
 								<a href="#">
-									<img src="{{asset('img/'.$settings->logo.'')}}" width="160" height="160" class="rounded-round" alt="">
+									<img src="{{asset('img/uploads/'.$settings->logo.'')}}" width="160" height="160" class="rounded-round" alt="">
 								</a>
 							</div>
 						</div>
@@ -35,6 +36,7 @@
 								<input type="text" class="form-control" value="{{$settings->title}} " name="title">
 							</div>
 						</div>
+						
 						<div class="form-group row">
 							<label class="col-lg-3 col-form-label">Key Words:</label>
 							<div class="col-lg-9">

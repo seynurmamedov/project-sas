@@ -1,5 +1,6 @@
 @extends('admin.layout.main') 
 @section('head')
+
 <script src="{{asset('assets/global_assets/js/plugins/tables/datatables/datatables.min.js')}}"></script>
 <script src="{{asset('assets/global_assets/js/plugins/forms/selects/select2.min.js')}}"></script>
 <script src="{{asset('assets/global_assets/js/demo_pages/datatables_basic.js')}}"></script>
@@ -9,26 +10,21 @@
 <script src="{{asset('assets/global_assets/js/demo_pages/form_select2.js')}}"></script>
 <script src="{{asset('assets/global_assets/js/demo_pages/picker_color.js')}}"></script>
 <script src="{{asset('assets/global_assets/js/plugins/pickers/color/spectrum.js')}}"></script>
-<script src="{{asset('assets/global_assets/js/plugins/forms/styling/switchery.min.js')}}"></script>
 @endsection
+@section('page-name') Color  @endsection
+
 @section('content')
-   <div class="row">
+   <div  class="row">
       <div class="card col-12">
          <div class="card-header header-elements-inline">
             <h5 class="card-title">Color</h5>
-            @if(Session::has('success-message'))
-               <h2 style="color: green">
-                     {{ Session::get('success-message') }}
-                     @php Session::forget('success-message'); @endphp
-               </h2>
-            @endif
             <div class="header-elements">
-               <button type="button" class="btn btn-primary text-center" data-toggle="modal" data-target="#insert">
+               <button type="button" class="modals btn btn-primary text-center" data-toggle="modal" data-target="#insert">
                   <h6 class="mb-0">Add New Color <i class="mi-insert-drive-file ml-1 "></i></h6>
                </button>
             </div>
          </div>
-         <div id="insert" class="modal fade @if ($errors->any()) show @endif" tabindex="-1" style="@if ($errors->any()) display: block; padding-right: 17px; @else display: none;@endif " aria-hidden="true">
+         <div id="insert" class="modal fade " tabindex="-1"  aria-hidden="true">
             <div class="modal-dialog">
                <div class="modal-content">
                   <div class="modal-header">
@@ -39,7 +35,7 @@
                      @csrf
                      <input name="id" type="text" class="d-none">
                      <div class="modal-body">
-                        <div class="form-group col-5 p-0">
+                        <div class="form-group col-5 p-0 d-none  @if ($errors->any()) d-block @endif">
                            @if ($errors->any())
                               @foreach ($errors->all() as $error)
                                  <p class="h5" style="color: #BD2130">{{ $error }}</p>
@@ -48,13 +44,13 @@
                         </div>
                         <div class="form-group col-5 p-0">
                            <label>Color Name</label>
-                           <input name="name" type="text" class="form-control">
+                           <input name="name" type="text" class="form-control" placeholder="Enter Color Name">
                         </div>
                         <div class="form-group mt-3">
                            <label class="d-block">Color code</label>
                            <div class="d-flex">
                               <input type="text"  class="form-control my-colorpicker-event-hide " data-preferred-format="HLS" data-fouc="" style="display: none;">
-                              <input type="text" name="code" class=" ml-1 col-3 form-control my-input" value="">
+                              <input type="text" name="code" class=" ml-1 col-3 form-control my-input" value="" placeholder="Enter color code">
                            </div>
                         </div>
                         <div class="form-group">
@@ -73,19 +69,19 @@
                </div>
             </div>
          </div>
-         <table class="table datatable-basic">
+         <table id="table" class="table datatable-basic">
             <thead>
-               <tr>
-                  <th>Color Name</th>
-                  <th>Color Code</th>
+               <tr >
+                  <th>Name</th>
+                  <th>Code</th>
                   <th>Visual</th>
                   <th>Status</th>
                   <th class="text-center">Actions</th>
                </tr>
             </thead>
-            <tbody>
+            <tbody >
                @foreach ($results as $result) 
-                  <tr>
+                  <tr class="text-capitalize">
                      <td>{{$result->name}}</td>
                      <td>{{$result->code}}</td>
                      <td>
@@ -107,7 +103,7 @@
                               </a>
                               <div class="dropdown-menu dropdown-menu-right">
                                  <p class="dropdown-item "><button type="button" class="w-100 h-100 text-left" style="background-color:transparent; border:none; outline:none;"  data-toggle="modal" data-target="#{{$result->id}}"><i class="mi-mode-edit mr-2"></i>Edit</button></p>
-                                 <a href="{{route('getColorDelete', ['id' => $result->id])}}" class="dropdown-item "><button type="button" style="background-color:transparent; border:none; outline:none;" ><i class="mi-delete mr-2"></i>Delete</button></a>
+                                 <button  data-id="{{$result->id}}" type="button"  class="dropdown-item delete" style="background-color:transparent; border:none; outline:none;"><i class="mi-delete mr-2"></i>Delete</button></a>
                               </div>
                            </div>
                         </div>
@@ -155,6 +151,36 @@
             </tbody>
          </table>
       </div>
-      @if ($errors->any())<div class="modal-backdrop fade show"></div>  @endif
+      @if ($errors->any())
+      <script>
+       setTimeout(function(){
+       $('.modals').trigger('click');
+      }, 1000);
+      </script>  
+      @endif
    </div>
+   @section('footer')
+   <script>
+      $(".delete").click(function(){
+            var id = $(this).data('id');
+            if(confirm("Are you sure you want to Delete this data?"))
+            {
+                  $.ajax({
+                     url:"{{route('getColorDelete')}}",
+                     mehtod:"get",
+                     data:{id:id},
+                     dataSrc: "",
+                     success:function(data)
+                     {
+                        window.location.reload()
+                     }
+                  })
+            }
+            else
+            {
+                  return false;
+            }
+         }); 
+   </script>
+   @endsection
 @endsection

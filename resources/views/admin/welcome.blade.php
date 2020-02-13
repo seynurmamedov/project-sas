@@ -3,6 +3,6 @@
 
 @section('content')
     <div class="row">
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae tempore esse voluptate voluptates voluptatum, nobis doloribus illum placeat suscipit earum voluptas soluta, tenetur vitae autem ullam vel commodi quidem saepe.
+	<h1>WELCOME</h1>
 	</div>
 @endsection

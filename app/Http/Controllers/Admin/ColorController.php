@@ -36,11 +36,10 @@ class ColorController extends Controller
         return redirect()->route('getColor');
     }
     
-    public function getColorDelete($id){
-        ColorStatic::where(['id'=>$id])->update([
+    public function getColorDelete(Request $request){
+       ColorStatic::where(['id'=>$request->id])->update([
             'is_delete'=>1
         ]);
-        return redirect()->route('getColor');
     }
 }
 

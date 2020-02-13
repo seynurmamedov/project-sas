@@ -11,35 +11,30 @@
 <script src="{{asset('assets/global_assets/js/plugins/pickers/color/spectrum.js')}}"></script>
 <script src="{{asset('assets/global_assets/js/plugins/forms/styling/switchery.min.js')}}"></script>
 @endsection
+@section('page-name') Category  @endsection
 @section('content')
    <div class="row">
       <div class="card col-12">
          <div class="card-header header-elements-inline">
             <h5 class="card-title">Category</h5>
-            @if(Session::has('success-message'))
-               <h2 style="color: green">
-                     {{ Session::get('success-message') }}
-                     @php Session::forget('success-message'); @endphp
-               </h2>
-            @endif
             <div class="header-elements">
-               <button type="button" class="btn btn-primary text-center" data-toggle="modal" data-target="#insert">
+               <button type="button" class="modals btn btn-primary text-center" data-toggle="modal" data-target="#insert">
                   <h6 class="mb-0">Add New Category <i class="mi-insert-drive-file ml-1 "></i></h6>
                </button>
             </div>
          </div>
-         <div id="insert" class="modal fade @if ($errors->any()) show @endif" tabindex="-1" style="@if ($errors->any()) display: block; padding-right: 17px; @else display: none;@endif " aria-hidden="true">
+         <div id="insert" class="modal fade" tabindex="-1"  aria-hidden="true">
             <div class="modal-dialog">
                <div class="modal-content">
                   <div class="modal-header">
-                     <h5 class="modal-title">Add Category </h5>
+                     <h5 class="modal-title">Add Category</h5>
                      <button type="button" class="close" data-dismiss="modal">×</button>
                   </div>
                   <form action="#" method="post">
                      @csrf
                      <input name="id" type="text" class="d-none">                  
                      <div class="modal-body">
-                        <div class="form-group col-5 p-0">
+                        <div class="form-group col-5 p-0 d-none  @if ($errors->any()) d-block @endif">
                            @if ($errors->any())
                               @foreach ($errors->all() as $error)
                                  <p class="h5" style="color: #BD2130">{{ $error }}</p>
@@ -48,7 +43,7 @@
                         </div>
                         <div class="form-group col-5 p-0">
                            <label>Category Name</label>
-                           <input name="name" type="text" class="form-control">
+                           <input name="name" type="text" class="form-control" placeholder="Enter category name">
                         </div>
                         <div class="form-group">
                            <label class="d-block">Status</label>
@@ -69,14 +64,14 @@
          <table class="table datatable-basic">
             <thead>
                <tr>
-                  <th>Category Name</th>
+                  <th>Name</th>
                   <th>Status</th>
                   <th class="text-center">Actions</th>
                </tr>
             </thead>
             <tbody>
                @foreach ($results as $result) 
-                  <tr>
+                  <tr class="text-capitalize">
                      <td>{{$result->name}}</td>
                      @if ($result->is_active == 1)
                      <td><span class="badge badge-success">Active</span></td>
@@ -132,6 +127,12 @@
             </tbody>
          </table>
       </div>
-      @if ($errors->any())<div class="modal-backdrop fade show"></div>  @endif   
+      @if ($errors->any())
+      <script>
+       setTimeout(function(){
+       $('.modals').trigger('click');
+      }, 1000);
+      </script>  
+      @endif
    </div>
 @endsection

@@ -14,6 +14,9 @@
 Route::get('/home', function () {
     return view('home-page');
 });
+Route::get('/', function () {
+    return view('home-page');
+});
 Route::get('/collection', function () {
     return view('collection-page');
 });
@@ -30,23 +33,51 @@ Route::get('/product', function () {
     return view('product-page');
 });
 
+Route::middleware(['auth','auth.admin'])->group(function () {
+    Route::get('/admin','Admin\HomeController@getHome')->name('getHomeAdmin');
 
-Route::get('/admin','Admin\HomeController@getHome')->name('getHomeAdmin');
+//User Settings route
+    Route::get('settings-user','Admin\UserSettingsController@getSettingsUser')->name('getSettingsUser');
+    Route::post('settings-user','Admin\UserSettingsController@postSettingsUser');
+//End User Settings route
 
-Route::get('admin/settings','Admin\SettingsController@getSettings')->name('getSettings');
-Route::post('admin/settings','Admin\SettingsController@postSettings');
+//Product route
+    Route::get('admin/product', 'Admin\ProductController@getProduct')->name('getProduct');
+    Route::get('admin/product-delete/{id}', 'Admin\ProductController@getDeleteProduct')->name('getDeleteProduct');
 
-Route::get('admin/color','Admin\ColorController@getColor')->name('getColor');
-Route::post('admin/color','Admin\ColorController@postColor');
-Route::get('admin/color/{id}','Admin\ColorController@getColorDelete')->name('getColorDelete');
+    Route::get('admin/product/insert','Admin\ProductController@getInsertProduct')->name('getInsertProduct');
+    Route::post('admin/product/insert','Admin\ProductController@postInsertProduct');
 
-Route::get('admin/category', 'Admin\CategoryController@getCategory')->name('getCategory');
-Route::post('admin/category', 'Admin\CategoryController@postCategory');
-Route::get('admin/category/{id}', 'Admin\CategoryController@getCategoryDelete')->name('getCategoryDelete');
+    Route::get('admin/product/edit/{id}', 'Admin\ProductController@getEditProduct')->name('getEditProduct');
+    Route::post('admin/product/edit/{id}', 'Admin\ProductController@postEditProduct');
+
+    Route::get('admin/product/edit-image-delete','Admin\ImageController@getImageDelete')->name('getImageDelete');
+//End Product route
+
+//Category route
+    Route::get('admin/category', 'Admin\CategoryController@getCategory')->name('getCategory');
+    Route::post('admin/category', 'Admin\CategoryController@postCategory');
+    Route::get('admin/category/{id}', 'Admin\CategoryController@getCategoryDelete')->name('getCategoryDelete');
+//End Category route
+
+//Color route
+    Route::get('admin/color','Admin\ColorController@getColor')->name('getColor');
+    Route::post('admin/color','Admin\ColorController@postColor');
+    Route::get('admin/color-delete','Admin\ColorController@getColorDelete')->name('getColorDelete');
+//End Color route
 
 
-Route::get('admin/product', 'Admin\ProductController@getProduct')->name('getProduct');
-Route::get('admin/product/insert','Admin\ProductController@getInsertProduct')->name('getInsertProduct');
-Route::post('admin/product/insert','Admin\ProductController@postInsertProduct');
-// Route::get('admin/product/edit/{id}', 'Admin\ProductController@getInsertProduct')->name('getEditProduct');
+//User Settings route
+    Route::get('users-list','Admin\UsersListController@getUsersList')->name('getUsersList');
+    Route::post('users-list','Admin\UsersListController@postUsersList');
+//End User Settings route
 
+//Settings route
+    Route::get('admin/settings','Admin\SettingsController@getSettings')->name('getSettings');
+    Route::post('admin/settings','Admin\SettingsController@postSettings');
+//End Settings route
+
+});
+Auth::routes();
+
+Route::get('/homee', 'HomeController@index')->name('home');

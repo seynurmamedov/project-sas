@@ -16,35 +16,26 @@ class SettingsController extends Controller
     public function postSettings(Request $request){
         $request->request->remove('_token');
         $file = $request->file('logo');
+        Settings::where(['id'=>1])->update([
+            'title'=>$request->get('title'),
+            'keywords'=>$request->get('keyword'),
+            'phone1'=>$request->get('phone1'),
+            'phone2'=>$request->get('phone2'),
+            'email'=>$request->get('email'),
+            'address'=>$request->get('address'),
+            'facebook'=>$request->get('facebook'),
+            'instagram'=>$request->get('instagram')
+        ]);
    		 if ($file) {
    		 	$destinationPath = 'img/uploads';
 		    $newurl =str_random(16).'.'.$file->getClientOriginalExtension();
 		    $file->move($destinationPath,$newurl);
             Settings::where(['id'=>1])->update([
-                'logo'=>$newurl,
-                'title'=>$request->get('title'),
-                'keywords'=>$request->get('keyword'),
-                'phone1'=>$request->get('phone1'),
-                'phone2'=>$request->get('phone2'),
-                'email'=>$request->get('email'),
-                'address'=>$request->get('address'),
-                'facebook'=>$request->get('facebook'),
-                'instagram'=>$request->get('instagram')
+                'logo'=>$newurl
             ]);
 	    
    		 }
-   		 else{
-            Settings::where(['id'=>1])->update([
-                'title'=>$request->get('title'),
-                'keywords'=>$request->get('keyword'),
-                'phone1'=>$request->get('phone1'),
-                'phone2'=>$request->get('phone2'),
-                'email'=>$request->get('email'),
-                'address'=>$request->get('address'),
-                'facebook'=>$request->get('facebook'),
-                'instagram'=>$request->get('instagram')
-            ]);
-		 }
+
         return $this->getSettings();
     }
 }

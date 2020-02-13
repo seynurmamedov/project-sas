@@ -20,8 +20,8 @@ class Product extends Model
     public function Color(){
     	return $this->hasMany('App\Models\Color','p_id','id');
     }
-    public function Image(){
-        return $this->hasMany('App\Models\Image','p_id','id');
+    public function Images(){
+        return $this->hasMany('App\Models\Images','p_id','id')->where(['is_delete'=>0]);
 
     }
   
