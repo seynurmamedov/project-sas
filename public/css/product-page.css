@@ -32,17 +32,15 @@
 }
 
 .items-home-page-sizeNcolor{
-    width: 200px;
+    width: 400px;
     transition: .5s;
 }
-.items-home-page-size,.items-home-page-color {
-width: 115px;
-}
+
 .items-home-page-size span,.items-home-page-color span{
-    width: 32px;
-    height: 32px;
+    width: 35px;
+    height: 35px;
     background: rgb(223, 223, 223);
-    border: 1px solid transparent;
+    border: 1px solid rgb(223, 223, 223);
     display: flex;
     align-items: center;
     justify-content: center;

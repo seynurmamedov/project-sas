@@ -22,7 +22,11 @@ class Product extends Model
     }
     public function Images(){
         return $this->hasMany('App\Models\Images','p_id','id')->where(['is_delete'=>0]);
-
     }
-  
+    public function SizeLimit(){
+    	return $this->hasMany('App\Models\Size','p_id','id')->limit(3);
+    }
+    public function ColorLimit(){
+    	return $this->hasMany('App\Models\Color','p_id','id')->limit(3);
+    }
 }

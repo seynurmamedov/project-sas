@@ -79,6 +79,12 @@
 								<input type="text" class="form-control" value="{{$settings->facebook}}" name="facebook">
 							</div>
 						</div>
+						<div class="form-group row">
+							<label class="col-lg-3 col-form-label">Youtube:</label>
+							<div class="col-lg-9">
+								<input type="text" class="form-control" value="{{$settings->youtube}}" name="youtube">
+							</div>
+						</div>
 						<div class="text-right">
 							<button type="submit" class="btn btn-primary">Submit form <i class="icon-paperplane ml-2"></i></button>
 						</div>

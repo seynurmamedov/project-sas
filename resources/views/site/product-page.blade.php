@@ -9,7 +9,7 @@
 <div class="w-100 mt-lg-5 mt-md-5 mb-5 text-center">
    <p class="h1 font-weight-bold w-100">Product details</p>
    <p class="w-100">
-      <a href="#" class="my-link">Home </a>
+      <a href="{{route('getHome')}}" class="my-link">Home </a>
       <i class="fas fa-chevron-right" style="font-size: 12px;"></i>
       <a href="#" class="my-link"> Product details</a>
    </p>
@@ -19,51 +19,48 @@
       <div class="col-lg-6 col-md-5 d-flex flex-wrap">
          <div class="col-lg-2 col-md-2 p-0 mt-4 d-lg-block d-md-block d-sm-none" >
             <div class="slider-nav text-center">
+               @foreach($result->Images as $image)
                <div class="slick-dupe">
-                  <img class="d-block w-100" src="{{asset('img/slide-1.webp')}}" alt="First slide">
+                  <img class="d-block w-100" src="{{asset('img/uploads/'.$image->name.'')}}" alt="First slide">
                </div>
-               <div class="slick-dupe">
-                  <img class="d-block w-100" src="{{asset('img/slide-2.webp')}}" alt="Second slide">
-               </div>
-               <div class="slick-dupe">
-                  <img class="d-block w-100" src="{{asset('img/slide-3.webp')}}" alt="Third slide">
-               </div>
+               @endforeach
             </div>
          </div> 
          <div class="col-lg-10 col-md-10 col-sm-12 pr-0" >
             <div class="slider-for">
+               @foreach($result->Images as $image)              
                <div class="slick-dupe">
-                  <img class="d-block w-100" src="{{asset('img/slide-1.webp')}}" alt="First slide">
+                  <img class="d-block w-100" src="{{asset('img/uploads/'.$image->name.'')}}" alt="First slide">
                </div>
-               <div class="slick-dupe">
-                  <img class="d-block w-100" src="{{asset('img/slide-2.webp')}}" alt="Second slide">
-               </div>
-               <div class="slick-dupe">
-                  <img class="d-block w-100" src="{{asset('img/slide-3.webp')}}" alt="Third slide">
-               </div>
+               @endforeach
             </div>
           </div>
       </div>
       <div class="col-lg-6 col-md-7 mt-lg-0 mt-md-0 mt-sm-5">
          <div class="col-12  mb-5">
-            <p class="h2 font-weight-bold mb-2">Indigo With Zip Dress</p>
-            <p class="h3 font-weight-bold" style="color: #fb5c42;">$88.00</p>
-            <p>Products Infomation Another very popular suit fabric is cotton. Similar to wool cotton is a breathable flexible material. Unfortunately, cotton tends to crease easily, meaning they don’t remain smart. Compared...</p>
+            <p class="h2 font-weight-bold mb-2">{{$result->title}}</p>
+            <p class="h3 font-weight-bold" style="color: #fb5c42;">${{$result->price}}</p>
+            <p>{{$result->text}}</p>
             <div class="items-home-page-sizeNcolor mt-5">
                <div class="d-flex justify-content-between">
-                  <h4 class="font-weight-bold">Size:</h4>
-                  <div class="items-home-page-size d-flex flex-wrap justify-content-around mb-3">
-                     <span class="rounded-circle">S</span>
-                     <span class="rounded-circle">M</span>
-                     <span class="rounded-circle">L</span>
+                  <div class="col-2">
+                     <h4 class="font-weight-bold">Size:</h4>
+                  </div>
+                  <div class="items-home-page-size col-10 d-flex flex-wrap  mb-3">
+                     @foreach($result->Size as $size)              
+                      <span class="rounded-circle mr-1 font-weight-bold">{{$size->name}}</span>
+                     @endforeach                     
                   </div>
                </div>
                <div class="d-flex justify-content-between">
-                  <h4 class="font-weight-bold">Color:</h4>
-                  <div class="items-home-page-color d-flex flex-wrap justify-content-around">
-                     <span class="rounded-circle" style="background-color: blanchedalmond;"></span>
-                     <span class="rounded-circle" style="background-color: rgb(182, 134, 61);"></span>
-                     <span class="rounded-circle" style="background-color: rgb(176, 190, 228);"></span>
+                  <div class="col-2">
+                     <h4 class="font-weight-bold">Color:</h4>
+                  </div>                  
+                  <div class="items-home-page-color col-10 d-flex flex-wrap">
+                     @foreach($result->Color as $color)
+                         <span class="rounded-circle mr-1" style="background-color: {{$color->ColorCode->code}};"></span>
+                     @endforeach
+                     
                   </div>
                </div>
             </div>
@@ -74,7 +71,7 @@
                   <button class="btn my-btn col-4" data-dir="up"><i class="fas fa-plus"></i></button>
                </div>
                <div class="col-7">
-                  <button class="btn my-btn w-100">ADD TO CARD</button>
+                  <button class="btn my-btn w-100 font-weight-bold">ADD TO CARD</button>
                </div>
                <div class="col-2 pl-0">
                   <button class="btn my-btn w-100 text-center"><i class="far fa-heart"></i></button>
@@ -85,7 +82,7 @@
                <tbody>
                   <tr>
                      <th scope="row">Product code:</th>
-                     <td scope="col" >CA78965</td>
+                     <td scope="col"><p class="text-uppercase m-0"> {{$result->p_code}}</p></td>
                   </tr>
                   <tr>
                      <th scope="row">Availability</th>
@@ -93,7 +90,25 @@
                   </tr>
                   <tr>
                      <th scope="row">Share:</th>
-                     <td scope="col"></td>
+                     <td scope="col" class="row mt-1 p-0">      
+                        
+                           <span class="social-networks rounded-circle mr-2">
+                              <a href="#" class="">
+                                 <i class="fab fa-instagram"></i>
+                              </a>
+                           </span>
+                           <span class="social-networks rounded-circle mr-2">
+                              <a href="">
+                                 <i class="fab fa-facebook-f"></i>
+                              </a>
+                           </span>
+                           <span class="social-networks rounded-circle">
+                              <a href="#" class="">
+                                 <i class="fab fa-youtube"></i>
+                              </a >
+                           </span>
+                     
+                     </td>
                   </tr>
                </tbody>
             </table>
@@ -130,11 +145,17 @@
                   </tr>
                   <tr>
                      <th scope="row">Size</th>
-                     <td>S, M, L, XL</td>
+                     <td>
+                        {{$result->Size->implode('name',',  ')}}
+                        </td>
                   </tr>
                   <tr>
                      <th scope="row">Colors</th>
-                     <td>Grey, Red, Blue, Black</td>
+                     <td class="text-capitalize">@foreach($result->Color as $color)
+                        {{$color->ColorCode->name}},
+                     @endforeach
+                     And More
+                     </td>
                   </tr>
                   <tr>
                      <th scope="row">Care</th>

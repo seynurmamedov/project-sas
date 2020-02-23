@@ -1,11 +1,20 @@
 @extends('site.layout.app')
-
+@section('head')
+<link rel="stylesheet" href="{{asset('css\login-page.css')}}">
+@endsection
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+        <div class="w-100 mt-lg-5 mt-md-5 mb-5 text-center">
+            <p class="h1 font-weight-bold w-100">{{ __('Login') }}</p>
+            <p class="w-100">
+                <a href="#" class="my-link">Home </a>
+                <i class="fas fa-chevron-right" style="font-size: 12px;"></i>
+                <a href="#" class="my-link">{{ __('Login') }}</a>
+            </p>
+        </div>
+                <div class=""></div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
@@ -53,12 +62,12 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn  btn-login-page">
                                     {{ __('Login') }}
                                 </button>
 
                                 @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
+                                    <a class="btn btn-link my-link" href="{{ route('password.request') }}">
                                         {{ __('Forgot Your Password?') }}
                                     </a>
                                 @endif
@@ -66,7 +75,6 @@
                         </div>
                     </form>
                 </div>
-            </div>
         </div>
     </div>
 </div>

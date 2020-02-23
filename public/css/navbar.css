@@ -63,17 +63,17 @@ text-decoration: none;
 .top-icons a i{
 font-size: 20px;
 margin-right: 15px;
-transition: 0.3s;
+transition: 0.1s;
 }
 .top-icons a:hover i{
     color: #fb5c42;
-    transition: 0.3s;
+
 }
 .top-icons a:hover .red-circle{
     /* background-color: rgb(58, 58, 58) ; */
     background-color: #171717;
     color: white;
-    transition: 0.7s;
+    transition: 0.1s;
 }
 .red-circle{
     width: 15px;
@@ -120,6 +120,7 @@ transition: 0.3s;
 }
 
 .my-dropdown{
+
     position: relative; 
   }
   
@@ -129,17 +130,25 @@ transition: 0.3s;
 }
   
 .my-dropdown-content{
-    display: none;
+    transition:0.4s;
     background-color: white;
     position: absolute;
-    top: -100px;
+    top: -115px;
     min-width: 130px;
     box-shadow: 0px 0px 12px -2px rgba(0,0,0,0.1);
     z-index: 1;
     margin: 0px 50px ;
     opacity: 0;
+    visibility: hidden;
 }
-
+.my-dropdown:hover .my-dropdown-content{
+    visibility: visible;
+    top:-80px;
+    opacity:1;
+}
+.cursor-pointer{
+    cursor: pointer;
+}
 .my-dropdown-content ul li{
     width: 100px;
     padding-left: 15px;
@@ -148,7 +157,6 @@ transition: 0.3s;
     display: inline-block;
     font-size: 15px;
     font-weight: 400;
-  
 }
 
 .my-dropdown-content ul li a:hover{
@@ -169,7 +177,6 @@ transition: 0.3s;
     transition: 0.4s;
 }
 .social-networks:hover {
-
     background-color: #fb5c42;
     transition: 0.4s;
 }

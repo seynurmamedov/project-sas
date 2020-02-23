@@ -532,26 +532,6 @@
       </div>
    </div>
 </div>
-<nav aria-label="Page navigation example">
-   <ul class="pagination justify-content-center" >
-      <li class="page-item disabled">
-         <a class="page-link " href="#" tabindex="-1" aria-disabled="true">Previous</a>
-      </li>
-      <li class="page-item ">
-         <a class="page-link my-link-shop my-link-active" href="#">1</a>
-      </li>
-      <li class="page-item ">
-         <a class="page-link my-link-shop" href="#">2</a>   
-      </li>
-      <li class="page-item">
-         <a class="page-link my-link-shop" href="#">3</a>
-      </li>
-      <li class="page-item" >
-         <a class="page-link my-link-shop" href="#">4</a>
-      </li>
-      <li class="page-item">
-         <a class="page-link my-link-shop" href="#">Next</a>
-      </li>
-   </ul>
-</nav>
+<div style="color:red!important;" class="d-flex justify-content-center">{{$results->links()}}</div>
+
 @endsection

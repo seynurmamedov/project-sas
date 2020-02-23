@@ -62,16 +62,26 @@
 					</div>
 					<div class="form-group col-12 row ">
 							<label class="col-12 col-form-label">Images:</label>
+							<div class="mr-3 col-2 position-relative">
+								<img src="{{asset('img/uploads/'.$result->preview.'')}}"  width="100%" class="rounded" alt="">
+							</div>
+					</div>
+					<div class="form-group col-12">
+                        <label class="font-weight-semibold">Product preview images:</label>
+						<input  type="file" class="file-input" multiple="multiple" data-fouc name="preview">
+                    </div>
+					<div class="form-group col-12 row ">
+							<label class="col-12 col-form-label">Images:</label>
 							@foreach($result->Images as $image)
 							<div class="mr-3 col-2 position-relative">
 								<i class="delete-img mi-close mr-3 mi-2x position-absolute" data-id="{{$image->id}}" style="cursor:pointer;"></i>
 								<img src="{{asset('img/uploads/'.$image->name.'')}}"  width="100%" class="rounded" alt="">
 							</div>
 							@endforeach
-						</div>
+					</div>
+					
                     <div class="form-group col-12">
                         <label class="font-weight-semibold">Product images:</label>
-						
 						<input  type="file" class="file-input"  multiple="multiple" data-fouc name="images[]">
                     </div>
 

@@ -1,12 +1,14 @@
-@extends('layouts.app')
-
+@extends('site.layout.app')
+@section('head')
+<link rel="stylesheet" href="{{asset('css\login-page.css')}}">
+@endsection
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
-
+                <div class="w-100 mt-lg-5 mt-md-5 mb-5 text-center">
+                    <p class="h1 font-weight-bold w-100">{{ __('Reset Password') }}</p>
+                </div>
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
@@ -33,13 +35,12 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-login-page">
                                     {{ __('Send Password Reset Link') }}
                                 </button>
                             </div>
                         </div>
                     </form>
-                </div>
             </div>
         </div>
     </div>

@@ -11,12 +11,12 @@
 |
 */
 
-Route::get('/home', function () {
-    return view('site.home-page');
-})->name('getHome');
-Route::get('/', function () {
-    return view('site.home-page');
-});
+Route::get('/home','Site\ProductsController@getProducts')->name('getHome');
+Route::get('/search','Site\LiveSearchController@action')->name('search');
+Route::get('/', 'Site\ProductsController@getProducts')->name('getHome');
+
+Route::get('/product/{id}', 'Site\ProductsController@getProductSingle')->name('getProductSingle');
+
 Route::get('/collection', function () {
     return view('site.collection-page');
 })->name('getCollection');
@@ -29,9 +29,7 @@ Route::get('/contact-us', function () {
 Route::get('/shop', function () {
     return view('site.shop-page');
 })->name('getShop');
-Route::get('/product', function () {
-    return view('site.product-page');
-})->name('getProduct');
+
 
 Route::middleware(['auth','auth.admin'])->group(function () {
     Route::get('/admin','Admin\HomeController@getHome')->name('getHomeAdmin');

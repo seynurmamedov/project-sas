@@ -1,15 +1,14 @@
 
 .layout-item {
-    
     overflow: hidden;
     position: relative;
-   
 }
+
 .layout-item-img-1,.layout-item-img-2,.layout-item-img-3{
-top: 20px;
-left: 50%;
-transform: translate(-50%, 0%);
-font-weight: bolder;
+    top: 20px;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    font-weight: bolder;
 }
 .layout-item-img-1 h3{
     min-width: 300px;
@@ -95,16 +94,15 @@ font-weight: bolder;
 }
 
 .items-home-page-size span,.items-home-page-color span{
-    width: 32px;
-    height: 32px;
-    background: white;
+    width: 35px;
+    height: 35px;
+    background: rgb(223, 223, 223);
     border: 1px solid transparent;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 12px;
     font-weight: bolder;
-    opacity: 0.85;
     cursor: pointer;
 }
 .feature-product-icons{
@@ -130,7 +128,6 @@ font-weight: bolder;
     transition: 0.3s;
 }
 .items-home-page-sizeNcolor{
-    width: 150px;
     height: 25px;
     position: absolute;
     top: 50%;
@@ -175,5 +172,5 @@ font-weight: bolder;
         margin: auto;
         margin-bottom: 30px;
     }
- 
+
 }

@@ -60,10 +60,17 @@
 						<input required class="form-control" type="number" name="count" placeholder="Enter count of product">
 					</div>
 
+					<div class="form-group col-12">
+                        <label class="font-weight-semibold">Product preview images:</label>
+						<input required type="file" class="file-input" multiple="multiple" data-fouc name="preview">
+                    </div>
+
                     <div class="form-group col-12">
                         <label class="font-weight-semibold">Product images:</label>
 						<input required type="file" class="file-input" multiple="multiple" data-fouc name="images[]">
                     </div>
+
+					
 
                     <div class="form-group col-6   d-flex flex-wrap">
                         <label class="col-12 p-0"> Product Size:</label>

@@ -4,21 +4,23 @@
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <meta name="csrf-token" content="{{ csrf_token() }}">
       <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
       <link href="https://use.fontawesome.com/releases/v5.0.1/css/all.css" rel="stylesheet">
+      <link rel="icon" href="{{asset('img/uploads/'.$settings->logo.'')}}" type="image/icon type">
       <link rel="stylesheet" href="{{asset('css\bootstrap.min.css')}}">
       <link rel="stylesheet" href="{{asset('css\navbar.css')}}">
       <link rel="stylesheet" href="{{asset('css\footer.css')}}">
       @yield('head')    
       <script src="https://kit.fontawesome.com/54230c22d1.js" crossorigin="anonymous"></script>
-      <title>Project</title>
+      <title>{{$settings->title}}</title>
    </head>
    <body>
       <!-- navbar -->
       <div class="pop-up-search my-col">
          <i class="far fa-times-circle position-absolute " id="close-pop-up-search-btn"></i>
          <div class="input-group  mb-3 position-absolute">
-            <input type="text" class="form-control border-top-0 border-right-0 border-left-0" placeholder="Search">
+            <input type="text" id="search"  name="search" class="form-control border-top-0 border-right-0 border-left-0" placeholder="Search">
             <div class="input-group-append">
                <button class="btn mybtn-pop-up" type="button">
                <i class="fas fa-search fa-lg " aria-hidden="true"></i>
@@ -30,10 +32,10 @@
          <div class="pop-up-mobile-store ">
             <ul class="list-group mt-5 d-flex justify-content-center text-center">
                <li class="list-group-item border-0 p-0">
-                  <a href="#"class="nav-link my-link  font-weight-bold h5">Kids</a>
+                  <a href="#" class="nav-link my-link  font-weight-bold h5">Kids</a>
                </li>
                <li class="list-group-item border-0 p-0" >
-                  <a href="#" class="nav-link my-link font-weight-bold h5" >Women's</a>
+                  <a href="#" class="nav-link my-link font-weight-bold h5">Women's</a>
                </li>
                <li class="list-group-item border-0 p-0">
                   <a href="#" class="nav-link my-link font-weight-bold h5">Bags</a>
@@ -58,15 +60,15 @@
          <div class="pop-up-mobile-contact box-shadov-sm">
             <div class="d-flex align-items-center flex-column mt-1 text-center">
                <div class="contact-item mt-3">
-                  <a href="mailto:seynur.mamedov221@gmail.com" class="my-link" style="  color: #fff!important;">
+                  <a href="mailto:{{$settings->email}}" class="my-link" style=" color: #fff!important;">
                   <i class="fas fa-envelope"></i>
-                  seynur.mamedov221@gmail.com 
+                  {{$settings->email}}
                   </a>
                </div>
                <div class="contact-item mt-3">
-                  <a href="tel:+994559294860" class="my-link" style="  color: #fff!important;">
+                  <a href="tel:{{$settings->phone1}}" class="my-link" style="color: #fff!important;">
                   <i class="fas fa-phone-alt"></i> 
-                  Call: +(994)-55-929-48-60
+                  Call: {{$settings->phone1}}
                   </a>
                </div>
             </div>
@@ -74,54 +76,37 @@
          <div class="pop-up-mobile-more">
             <ul class="navbar-nav w-100 text-center mt-3">
                <li class="nav-item">
-                  <a class="nav-link  h5 font-weight-bold" href="home"> Home</a>
+                  <a class="nav-link  h5 font-weight-bold" href="{{route('getHome')}}"> Home</a>
                </li>
                <li class="nav-item">
-                  <a class="nav-link  h5 font-weight-bold" href="collection"> Collection</a>
+                  <a class="nav-link  h5 font-weight-bold" href="{{route('getCollection')}}"> Collection</a>
                </li>
                <li class="nav-item">
-                  <a class="nav-link  h5 font-weight-bold" href="shop"> Shop</a>
+                  <a class="nav-link  h5 font-weight-bold" href="{{route('getShop')}}"> Shop</a>
                </li>
                <li class="nav-item">
-                  <a class="nav-link  h5 font-weight-bold" href="about"> About</a>
+                  <a class="nav-link  h5 font-weight-bold" href="{{route('getAbout')}}"> About</a>
                </li>
                <li class="nav-item">
-                  <a class="nav-link  h5 font-weight-bold" href="blog"> Blog</a>
-               </li>
-               <li class="nav-item ">
-                  <a class="nav-link  h5 font-weight-bold" href="contact-us"> Contact Us</a>
+                  <a class="nav-link  h5 font-weight-bold" href="{{route('getContactUs')}}"> Contact Us</a>
                </li>
                <hr class="w-100 d-md-none font-weight-bold p-2">
-               <div class="treeview">
-                  <li>
-                     <a class="nav-link h5 font-weight-bold treeview" href="#">EN 
-                     <i class="fas fa-angle-right rotated"></i></a>      
-                     <ul class="nested list-unstyled">
-                        <li>
-                           <a class="nav-link h6 font-weight-bold" href="#">RUS</a>
-                        </li>
-                        <li>
-                           <a class="nav-link h6 font-weight-bold" href="#">AZE</a>
-                        </li>
-                     </ul>
-                  </li>
-               </div>
                <div class="row  justify-content-center mt-2">
-                  <span class="social-networks rounded-circle mr-2">
-                  <a href="#" class="">
-                  <i class="fab fa-instagram"></i>
+                  <a href="{{$settings->instagram}}" target="_blank">
+                     <span class="social-networks rounded-circle mr-2">
+                           <i class="fab fa-instagram"></i>
+                     </span>
                   </a>
-                  </span>
-                  <span class="social-networks rounded-circle mr-2">
-                  <a href="">
-                  <i class="fab fa-facebook-f"></i>
+                  <a href="{{$settings->facebook}}" target="_blank" >
+                     <span class="social-networks rounded-circle mr-2">
+                           <i class="fab fa-facebook-f"></i>
+                     </span>
                   </a>
-                  </span>
-                  <span class="social-networks rounded-circle">
-                  <a href="#" class="">
-                  <i class="fab fa-youtube"></i>
+                  <a href="{{$settings->youtube}}" target="_blank" >
+                     <span class="social-networks rounded-circle">
+                           <i class="fab fa-youtube"></i>
+                     </span>
                   </a>
-                  </span>
                </div>
             </ul>
          </div>
@@ -134,7 +119,7 @@
                   <a href="#" class="col-4 mt-3 p-0 ">
                   <i class="search-button fas fa-search fa-lg mr-3 "></i>
                   </a>
-                  <a class="nav-link p-0 col-4 mt-1" href="home">
+                  <a class="nav-link p-0 col-4 mt-1" href="{{route('getHome')}}">
                      <h2 class="p-0"> 
                         Capie<span class="color-orange">.</span>
                      </h2>
@@ -151,7 +136,7 @@
             <div class="top-icons p-0">
                <ul class="d-flex justify-content-between mb-0 text-center">
                   <li class="col-2 ">
-                     <a href="home" class="nav-link d-flex flex-wrap">
+                     <a href="{{route('getHome')}}" class="nav-link d-flex flex-wrap">
                      <i class="fas col-12 fa-home m-0 p-0 fa-mySize"></i>
                      <span class=" mt-1">Home</span>
                      </a>
@@ -191,7 +176,7 @@
                   <i class="fas fa-bars fa-lg "></i>
                </div>
                <div class="pt-5 pb-4 logo">
-                  <a class="nav-link pl-0" href="{{ url('/') }}">
+                  <a class="nav-link pl-0" href="{{route('getHome')}}">
                      <h2> 
                         Capie<span class="color-orange">.</span>
                      </h2>
@@ -234,29 +219,29 @@
                      <li class="nav-item pb-5 mb-5">
                         <a class="nav-link " href="{{route('getContactUs')}}"> Contact Us</a>
                      </li>
-                     <div class="dropdown my-dropdown">
+                     <div class="my-dropdown">
                         <li class="">
-                           <a class="nav-link" href="">My Account</a>
+                           <p class="nav-link cursor-pointer" href="">My Account</p>
                         </li>
                         <div class="dropdown-content my-dropdown-content">
                            <ul>
                               @guest
-                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                 <li class="nav-item p-2 pl-4">
+                                    <a class="my-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                                  </li>
                                  @if (Route::has('register'))
-                                 <li class="nav-item">
-                                       <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                 <li class="nav-item p-2 pl-4">
+                                       <a class="my-link " href="{{ route('register') }}">{{ __('Register') }}</a>
                                  </li>
                                  @endif
                                  @else
-                                    <li class="nav-item">
-                                       <a class="nav-link " href="#" role="button">
+                                    <li class="nav-item p-2 pl-4">
+                                       <a class="my-link " href="#" role="button">
                                            {{ Auth::user()->name }} <span class="caret"></span>
                                        </a>
                                     </li>
-                                    <li>
-                                       <a class="nav-link" href="{{ route('logout') }}"
+                                    <li class="nav-item p-2 pl-4">
+                                       <a class="my-link " href="{{ route('logout') }}"
                                           onclick="event.preventDefault();
                                           document.getElementById('logout-form').submit();">
                                           {{ __('Logout') }}
@@ -269,37 +254,22 @@
                            </ul>
                         </div>
                      </div>
-                     <div class="dropdown my-dropdown mt-1">
-                        <li>
-                           <a class="nav-link" href="">EN</a>
-                        </li>
-                        <div class="dropdown-content my-dropdown-content">
-                           <ul>
-                              <li>
-                                 <a class="nav-link" href="">RUS</a>
-                              </li>
-                              <li>
-                                 <a class="nav-link" href="">AZE</a>
-                              </li>
-                           </ul>
-                        </div>
-                     </div>
                      <div class="row ml-5 pl-1 mt-5 ">
-                        <span class="social-networks rounded-circle mr-2">
-                        <a href="#" class="">
-                        <i class="fab fa-instagram"></i>
+                        <a href="{{$settings->instagram}}" target="_blank" style="color:black; text-decoration:none">
+                           <span class="social-networks rounded-circle mr-2">
+                                 <i class="fab fa-instagram"></i>
+                           </span>
                         </a>
-                        </span>
-                        <span class="social-networks rounded-circle mr-2">
-                        <a href="">
-                        <i class="fab fa-facebook-f"></i>
+                        <a href="{{$settings->facebook}}" target="_blank" style="color:black; text-decoration:none" >
+                           <span class="social-networks rounded-circle mr-2">
+                                 <i class="fab fa-facebook-f"></i>
+                           </span>
                         </a>
-                        </span>
-                        <span class="social-networks rounded-circle">
-                        <a href="#" class="">
-                        <i class="fab fa-youtube"></i>
-                        </a >
-                        </span>
+                        <a href="{{$settings->youtube}}" target="_blank" style="color:black; text-decoration:none" >
+                           <span class="social-networks rounded-circle">
+                                 <i class="fab fa-youtube"></i>
+                           </span>
+                        </a>
                      </div>
                   </ul>
                </nav>
@@ -313,6 +283,23 @@
             <!-- navbar end -->
             <div class="main position-relative">
                <!-- content -->
+               <div class="table-responsive">
+      <h3 align="center">Total Data : <span id="total_records"></span></h3>
+      <table class="table table-striped table-bordered">
+       <thead>
+        <tr>
+         <th>Customer Name</th>
+         <th>Address</th>
+         <th>City</th>
+         <th>Postal Code</th>
+         <th>Country</th>
+        </tr>
+       </thead>
+       <tbody>
+
+       </tbody>
+      </table>
+     </div>
                @yield('content')
                <!-- content end -->
                <!-- footer -->
@@ -376,7 +363,7 @@
                      <div class="row justify-content-between">
                         <div class="col-lg-3 px-2">
                            <div class="logo">
-                              <a class="nav-link p-0" href="{{ url('/') }}">
+                              <a class="nav-link p-0" href="{{route('getHome')}}">
                                  <h2 class="p-0"> 
                                     Capie<span class="color-orange">.</span>
                                  </h2>
@@ -436,18 +423,18 @@
                         <div class="col-md-3 footer-nav">
                            <ul class="list-unstyled">
                               <li class="nav-item">
-                                 <a href="#!" class="nav-link">
+                                 <a href="{{route('getAbout')}}"" class="nav-link">
                                  <span>About</span>
                                  </a>
                               </li>
                               <li class="nav-item">
-                                 <a href="#!" class="nav-link">
-                                 <span>Blogs</span>
+                                 <a href="{{route('getCollection')}}" class="nav-link">
+                                 <span>Collection</span>
                                  </a>
                               </li>
                               <li class="nav-item">
-                                 <a href="#!" class="nav-link">
-                                 <span>Contact</span>
+                                 <a href="{{route('getContactUs')}}" class="nav-link">
+                                 <span>Contact Us</span>
                                  </a>
                               </li>
                               <li class="nav-item">
@@ -461,22 +448,22 @@
                         <div class="col-md-3 footer-nav">
                            <ul class="list-unstyled">
                               <li class="nav-item">
-                                 <a href="#!" class="nav-link">
+                                 <a href="{{route('getHome')}}" class="nav-link">
                                  <span>Privacy Policy</span>
                                  </a>
                               </li>
                               <li class="nav-item">
-                                 <a href="#!" class="nav-link">
+                                 <a href="{{route('getHome')}}" class="nav-link">
                                  <span>Returns</span>
                                  </a>
                               </li>
                               <li class="nav-item">
-                                 <a href="#!" class="nav-link">
+                                 <a href="{{route('getHome')}}" class="nav-link">
                                  <span>Promotions</span>
                                  </a>
                               </li>
                               <li class="nav-item">
-                                 <a href="#!" class="nav-link">
+                                 <a href="{{route('getHome')}}" class="nav-link">
                                  <span>Orders Tracking</span>
                                  </a>
                               </li>
@@ -484,12 +471,12 @@
                         </div>
                         <hr class="clearfix w-100 d-md-none">
                         <div class="col-md-3 ">
-                           <h5 class="font-weight-bold text-uppercase mt-3 mb-4"><b>+01-3-8888-6868</b></h5>
-                           <span>38 Block Street,Sydney, Australia</span>
+                           <h5 class="font-weight-bold text-uppercase mt-3 mb-4"><b>{{$settings->phone1}}</b></h5>
+                           <span>{{$settings->address}}</span>
                         </div>
                      </div>
                   </div>
-                  <div class="footer-copyright text-center py-5 px-1 ml-1 ">© 2020 BY SAS tm.</div>
+                  <div class="footer-copyright text-center py-5 px-1 ml-1 ">© 2020 BY SEYNUR MAMEDOV.</div>
                </footer>
                <div class="mobile-clearfix"></div>
             </div>
@@ -498,10 +485,31 @@
       </div>
    </body>
    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+   <script type="text/javascript">
+   $('#search').on('keyup',function(){
+      $value=$(this).val();
+
+      $.ajax({
+         type : 'get',
+         url : '{{route('search')}}',
+         data:{'search':$value},
+         success:function(data){
+            alert(
+               'aa'
+            )
+            $('tbody').html(data);
+         }
+      });
+   })
+   </script>
+   <script type="text/javascript">
+   $.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
+   </script>
    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/js/bootstrap.min.js" integrity="sha384-3qaqj0lc6sV/qpzrc1N5DC6i1VRn/HyX4qdPaiEFbn54VjQBEU341pvjz7Dv3n6P" crossorigin="anonymous"></script>
    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
    <script src="{{URL::asset('js/script.js')}}"></script>
    @yield('script')    
+
 
 </html>

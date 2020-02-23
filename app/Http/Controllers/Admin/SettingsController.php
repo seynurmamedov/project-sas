@@ -9,7 +9,7 @@ use App\Models\Settings;
 class SettingsController extends Controller
 {
     public function getSettings(){
-        $settings = Settings::where('id',1)->first();
+        $settings = Settings::first();
         return view('admin.settings',['settings'=>$settings]);
     }
 
@@ -24,7 +24,8 @@ class SettingsController extends Controller
             'email'=>$request->get('email'),
             'address'=>$request->get('address'),
             'facebook'=>$request->get('facebook'),
-            'instagram'=>$request->get('instagram')
+            'instagram'=>$request->get('instagram'),
+            'youtube'=>$request->get('youtube')
         ]);
    		 if ($file) {
    		 	$destinationPath = 'img/uploads';

@@ -1,0 +1,18 @@
+.my-link{
+    color: black!important;
+    transition: 0.3s;
+    text-decoration: none!important;
+}
+.my-link:hover{
+    color: #fb5c42!important;
+    transition: 0.3s;
+}
+.btn-login-page{
+	background-color: #fb5c42;
+	color: white!important;
+    transition: 0.4s;
+}
+.btn-login-page:hover{
+    background-color: white;
+    color: #fb5c42!important;
+}

@@ -49,26 +49,22 @@
     <p class="w-100">Top sale on this week</p>
 </div>
 <div class="container p-0">
-    <div class="d-flex flex-wrap justify-content-between">
-        <a href="product">
+    <div class="d-flex flex-wrap ">
+        @foreach($results as $result)
+        <a href="product/{{$result->id}}">
             <div class="col-lg-3 col-md-4 col-sm-6 col-12">
                 <div class="card border-0 feature-products">
-                    <img class="card-img-top " src="{{asset('img/feature-products-img-01.webp')}}" alt="Card image cap">
+                    <img class="card-img-top " src="{{asset('img/uploads/'.$result->preview.'')}}" alt="Card image cap">
                     <div class="card-body d-flex p-0 pt-1">
                         <p class="card-text col-8 w-100">
-                            <a href="#" class=" my-link p-0">Product Default Layout</a>
+                            <a href="product/{{$result->id}}" class=" my-link p-0">{{$result->title}}</a>
                         </p>
-                        <p class="card-text col-4 p-0">Rs. 6,278.14</p>
+                        <p class="card-text col-4 p-0">${{$result->price}}</p>
                     </div>
                     <div class="feature-product-icons">
                         <ul class="list-group">
                             <li class="list-group-item border-0 pb-0">
                                 <a href="#">
-                                    <i class="fas fa-search fa-lg "></i>
-                                </a>
-                            </li>
-                            <li class="list-group-item border-0 pb-0">
-                                <a href="">
                                     <i class="fas fa-compress-arrows-alt fa-lg"></i>
                                 </a>
                             </li>
@@ -88,165 +84,27 @@
                     </div>
                     <div class="col-9 items-home-page-sizeNcolor">
                         <div class="items-home-page-size d-flex flex-wrap justify-content-around mb-2">
-                            <span class="rounded-circle">S</span>
-                            <span class="rounded-circle">M</span>
-                            <span class="rounded-circle">L</span>
+                        @foreach($result->SizeLimit as $size)
+                            <span class="rounded-circle font-weight-bold">{{$size->name}}</span>
+                        @endforeach
                         </div>
                         <div class="items-home-page-color d-flex flex-wrap justify-content-around">
-                            <span class="rounded-circle" style="background-color: blanchedalmond;"></span>
-                            <span class="rounded-circle" style="background-color: rgb(182, 134, 61);"></span>
-                            <span class="rounded-circle" style="background-color: rgb(176, 190, 228);"></span>
+                        @foreach($result->ColorLimit as $color)
+                            <span class="rounded-circle" style="background-color: {{$color->ColorCode->code}};"></span>
+                        @endforeach
+                        <a href="product/{{$result->id}}" class="my-link text-xs"><span class="rounded-circle">Other</span></a>
+
                         </div>
+                        
                     </div>
                 </div>
             </div>
         </a>
-        <div class="col-lg-3 col-md-4 col-sm-6 col-12">
-            <div class="card border-0 feature-products">
-                <img class="card-img-top " src="{{asset('img/feature-products-img-02.webp')}}" alt="Card image cap">
-                <div class="card-body d-flex p-0 pt-1">
-                    <p class="card-text col-8 w-100">
-                        <a href="#" class=" my-link p-0">Product Default Layout</a>
-                    </p>
-                    <p class="card-text col-4 p-0">Rs. 6,278.14</p>
-                </div>
-                <div class="feature-product-icons">
-                    <ul class="list-group">
-                        <li class="list-group-item border-0 pb-0">
-                            <a href="#">
-                                <i class="fas fa-search fa-lg "></i>
-                            </a>
-                        </li>
-                        <li class="list-group-item border-0 pb-0">
-                            <a href="">
-                                <i class="fas fa-compress-arrows-alt fa-lg"></i>
-                            </a>
-                        </li>
-                        <li class="list-group-item border-0">
-                            <a href="#">
-                                <i class="far fa-heart fa-lg"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="items-home-page-btn">
-                    <form>
-                        <button class="btn btn-outline-secondary btn-home-page" type="button">
-                            <i class="fas fa-shopping-cart mr-1"></i>Add To Card
-                        </button>
-                    </form>
-                </div>
-                <div class="col-9 items-home-page-sizeNcolor">
-                    <div class="items-home-page-size d-flex flex-wrap justify-content-around mb-2">
-                        <span class="rounded-circle">S</span>
-                        <span class="rounded-circle">M</span>
-                        <span class="rounded-circle">L</span>
-                    </div>
-                    <div class="items-home-page-color d-flex flex-wrap justify-content-around">
-                        <span class="rounded-circle" style="background-color: blanchedalmond;"></span>
-                        <span class="rounded-circle" style="background-color: rgb(182, 134, 61);"></span>
-                        <span class="rounded-circle" style="background-color: rgb(176, 190, 228);"></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 col-12">
-            <div class="card border-0 feature-products">
-                <img class="card-img-top " src="{{asset('img/feature-products-img-03.webp')}}" alt="Card image cap">
-                <div class="card-body d-flex p-0 pt-1">
-                    <p class="card-text col-8 w-100">
-                        <a href="#" class=" my-link p-0">Product Default Layout</a>
-                    </p>
-                    <p class="card-text col-4 p-0">Rs. 6,278.14</p>
-                </div>
-                <div class="feature-product-icons">
-                    <ul class="list-group">
-                        <li class="list-group-item border-0 pb-0">
-                            <a href="#">
-                                <i class="fas fa-search fa-lg "></i>
-                            </a>
-                        </li>
-                        <li class="list-group-item border-0 pb-0">
-                            <a href="">
-                                <i class="fas fa-compress-arrows-alt fa-lg"></i>
-                            </a>
-                        </li>
-                        <li class="list-group-item border-0">
-                            <a href="#">
-                                <i class="far fa-heart fa-lg"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="items-home-page-btn">
-                    <form>
-                        <button class="btn btn-outline-secondary btn-home-page" type="button">
-                            <i class="fas fa-shopping-cart mr-1"></i>Add To Card
-                        </button>
-                    </form>
-                </div>
-                <div class="col-9 items-home-page-sizeNcolor">
-                    <div class="items-home-page-size d-flex flex-wrap justify-content-around mb-2">
-                        <span class="rounded-circle">S</span>
-                        <span class="rounded-circle">M</span>
-                        <span class="rounded-circle">L</span>
-                    </div>
-                    <div class="items-home-page-color d-flex flex-wrap justify-content-around">
-                        <span class="rounded-circle" style="background-color: blanchedalmond;"></span>
-                        <span class="rounded-circle" style="background-color: rgb(182, 134, 61);"></span>
-                        <span class="rounded-circle" style="background-color: rgb(176, 190, 228);"></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 col-12">
-            <div class="card border-0 feature-products">
-                <img class="card-img-top " src="{{asset('img/feature-products-img-04.webp')}}" alt="Card image cap">
-                <div class="card-body d-flex p-0 pt-1">
-                    <p class="card-text col-8 w-100">
-                        <a href="#" class=" my-link p-0">Product Default Layout</a>
-                    </p>
-                    <p class="card-text col-4 p-0">Rs. 6,278.14</p>
-                </div>
-                <div class="feature-product-icons">
-                    <ul class="list-group">
-                        <li class="list-group-item border-0 pb-0">
-                            <a href="#">
-                                <i class="fas fa-search fa-lg "></i>
-                            </a>
-                        </li>
-                        <li class="list-group-item border-0 pb-0">
-                            <a href="">
-                                <i class="fas fa-compress-arrows-alt fa-lg"></i>
-                            </a>
-                        </li>
-                        <li class="list-group-item border-0">
-                            <a href="#">
-                                <i class="far fa-heart fa-lg"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="items-home-page-btn">
-                    <form>
-                        <button class="btn btn-outline-secondary btn-home-page" type="button">
-                            <i class="fas fa-shopping-cart mr-1"></i>Add To Card
-                        </button>
-                    </form>
-                </div>
-                <div class="col-9 items-home-page-sizeNcolor">
-                    <div class="items-home-page-size d-flex flex-wrap justify-content-around mb-2">
-                        <span class="rounded-circle">S</span>
-                        <span class="rounded-circle">M</span>
-                        <span class="rounded-circle">L</span>
-                    </div>
-                    <div class="items-home-page-color d-flex flex-wrap justify-content-around">
-                        <span class="rounded-circle" style="background-color: blanchedalmond;"></span>
-                        <span class="rounded-circle" style="background-color: rgb(182, 134, 61);"></span>
-                        <span class="rounded-circle" style="background-color: rgb(176, 190, 228);"></span>
-                     </div>
-                  </div>
-       </div>
+
+
+        
+
+        @endforeach
    </div>
 </div>
 @endsection

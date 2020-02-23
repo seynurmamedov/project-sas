@@ -1,8 +1,4 @@
 $( document ).ready(function() {
-
-
-
-
 //Sticky navbar
 
 let sticky = navbar.offsetTop;
@@ -35,14 +31,6 @@ $(".back-to-top").click(function(){
 
 // drop-down animation
 
-$(".my-dropdown").hover(function(){
-  $( this ).children(".my-dropdown-content").css({ "display":"inline-block"})
-  $( this ).children(".my-dropdown-content").animate({ "top":"-80px" ,"opacity":"1"},400)
-    },function(){
-      $( this ).children(".my-dropdown-content").hide()
-      $( this ).children(".my-dropdown-content").animate({ "top":"-100px" ,"opacity":"0"})
-     
-});
 
 $(".filter-dropdown").hover(function(){
   $( this ).children(".filter-dropdown-content").css({ "display":"inline-block"})
@@ -119,7 +107,7 @@ $(".items-home-page-size > span").click(function(){
 })
 
 $(".items-home-page-color > span").click(function(){
-  $(".items-home-page-color > span").css({"border-color":"transparent"})
+  $(".items-home-page-color > span").css({"border-color":"rgb(223, 223, 223)"})
   $(this).css({"border-color":"red"})
 })
 
@@ -137,38 +125,39 @@ $('.treeview').click(function(){
 
 
 //slider
-
-$('.slider-for').slick({
-  slidesToShow: 1,
-  slidesToScroll: 1,
-  arrows: true,
-  asNavFor: '.slider-nav',
-  fade: true,
-  nextArrow: '<i class="fas fa-2x fa-chevron-right  next-arrow "></i>',
-  prevArrow: '<i class="fas fa-2x fa-chevron-left  prev-arrow "></i>',
-});
-$('.slider-nav').slick({
-  speed: 500,
-  asNavFor: '.slider-for',
-  autoplay: true,
-  arrows: true,
-  autoplaySpeed: 4000,
-  slidesToShow: 3,
-  slidesToScroll: 1,
-  infinite: true,
-  pauseOnHover: false,
-  swipe: true,
-  touchMove: true,
-  vertical: true,
-  verticalScrolling: true,
-  useTransform: true,
-  nextArrow: '<i class="fas fa-lg fa-chevron-down mt-2 my-link"></i>',
-  prevArrow: '<i class="fas fa-lg fa-chevron-up mb-2 my-link"></i>',
-});
-$(".slick-dupe").each(function(index,el) {
-  $(".slider-nav").slick('slickAdd', "<div>" + el.innerHTML + "</div>");
-  $(".slider-for").slick('slickAdd', "<div>" + el.innerHTML + "</div>");
-})
+if($('.slider-for').is(':visible')==true){
+  $('.slider-for').slick({
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: true,
+    asNavFor: '.slider-nav',
+    fade: true,
+    nextArrow: '<i class="fas fa-2x fa-chevron-right  next-arrow "></i>',
+    prevArrow: '<i class="fas fa-2x fa-chevron-left  prev-arrow "></i>',
+  });
+  $('.slider-nav').slick({
+    speed: 500,
+    asNavFor: '.slider-for',
+    autoplay: true,
+    arrows: true,
+    autoplaySpeed: 4000,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    infinite: true,
+    pauseOnHover: false,
+    swipe: true,
+    touchMove: true,
+    vertical: true,
+    verticalScrolling: true,
+    useTransform: true,
+    nextArrow: '<i class="fas fa-lg fa-chevron-down mt-2 my-link"></i>',
+    prevArrow: '<i class="fas fa-lg fa-chevron-up mb-2 my-link"></i>',
+  });
+  $(".slick-dupe").each(function(index,el) {
+    $(".slider-nav").slick('slickAdd', "<div>" + el.innerHTML + "</div>");
+    $(".slider-for").slick('slickAdd', "<div>" + el.innerHTML + "</div>");
+  })
+}
 //input
 $(document).on('click', '.number-spinner button', function () {    
 		oldValue = $(this).closest('.number-spinner').find('input').val().trim(),
