@@ -1,6 +1,9 @@
 @extends('site.layout.app') 
 @section('head')
-<link rel="stylesheet" href="{{asset('css\home-page.css')}}"> @endsection @section('content')
+<link rel="stylesheet" href="{{asset('css\home-page.css')}}"> 
+<link rel="stylesheet" href="{{asset('css\product.css')}}"> 
+@endsection 
+@section('content')
 <div class="myW-100">a</div>
 <div class="container">
     <div class="row m-0 w-100 home-layout">
@@ -57,7 +60,7 @@
                     <img class="card-img-top " src="{{asset('img/uploads/'.$result->preview.'')}}" alt="Card image cap">
                     <div class="card-body d-flex p-0 pt-1">
                         <p class="card-text col-8 w-100">
-                            <a href="product/{{$result->id}}" class=" my-link p-0">{{$result->title}}</a>
+                            <a href="product/{{$result->id}}" class="my-link p-0">{{$result->title}}</a>
                         </p>
                         <p class="card-text col-4 p-0">${{$result->price}}</p>
                     </div>
