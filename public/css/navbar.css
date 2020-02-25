@@ -218,10 +218,9 @@ transition: 0.1s;
     top:20px;
     font-size: 25px;
 }
-.pop-up-search div{
-    top: 150px;
-    left: 50px;
+.search-input{
     max-width: 90%;
+    margin-top: 25vh;
 }
 .mybtn-pop-up{
     border-bottom: 1px solid #ced4da;
@@ -337,11 +336,11 @@ transition: 0.1s;
         left: 0;
         max-width: 100%;
     }
-    .pop-up-search div{
+    /* .pop-up-search div{
         top: 150px;
         left: 50px;
         max-width: 80%;
-    }
+    } */
   
     .back-to-top{
         bottom: 80px;

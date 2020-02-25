@@ -17,15 +17,18 @@
    </head>
    <body>
       <!-- navbar -->
+      
       <div class="pop-up-search my-col">
          <i class="far fa-times-circle position-absolute " id="close-pop-up-search-btn"></i>
-         <div class="input-group  mb-3 position-absolute">
+
+         <div class="input-group search-input mx-auto mb-5">
             <input type="text" id="search"  name="search" class="form-control border-top-0 border-right-0 border-left-0" placeholder="Search">
-            <div class="input-group-append">
-               <button class="btn mybtn-pop-up" type="button">
-               <i class="fas fa-search fa-lg " aria-hidden="true"></i>
-               </button>
-            </div>
+
+         </div>  
+         <div class="container">
+
+         <div class="searchAjax row"></div>
+            
          </div>
       </div>
       <div class="pop-ups">
@@ -283,23 +286,6 @@
             <!-- navbar end -->
             <div class="main position-relative">
                <!-- content -->
-               <div class="table-responsive">
-      <h3 align="center">Total Data : <span id="total_records"></span></h3>
-      <table class="table table-striped table-bordered">
-       <thead>
-        <tr>
-         <th>Customer Name</th>
-         <th>Address</th>
-         <th>City</th>
-         <th>Postal Code</th>
-         <th>Country</th>
-        </tr>
-       </thead>
-       <tbody>
-
-       </tbody>
-      </table>
-     </div>
                @yield('content')
                <!-- content end -->
                <!-- footer -->
@@ -494,10 +480,7 @@
          url : '{{route('search')}}',
          data:{'search':$value},
          success:function(data){
-            alert(
-               'aa'
-            )
-            $('tbody').html(data);
+            $('.searchAjax').html(data);
          }
       });
    })
