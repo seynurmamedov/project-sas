@@ -168,13 +168,13 @@
       <a href="#" class="my-link"> Shop</a>
    </p>
 </div>
-<div class="container p-0 d-lg-block d-md-block d-sm-none d-none">
+<div class="container-fluid p-0 d-lg-block d-md-block d-sm-none d-none">
    <div class="d-flex justify-content-between pt-3 pr-3 pl-3 pb-0 dropdown " style="background-color: #f8f8f2;">
       <div class="col-lg-4 my-auto ">
          <div class="filter-dropdown d-inline-block ">
             <span class=" font-weight-bold h5 pb-2 d-block cursor-pointer" >Filter  <i class="fas fa-angle-down h6"></i></span>                              
             <!-- Categories -->
-            <div class="container-fluid position-absolute shadow-sm dropdown-content filter-dropdown-content left-0">
+            <div class="container-fluid position-absolute shadow-sm dropdown-content filter-dropdown-content left-4">
                <div class="row ">
                   <div class="col-lg-2 col-md-6 text-lg-left text-md-center m-lg-4 mr-lg-5 m-md-0 mt-md-5">
                      <span class="h5 font-weight-bold pl-lg-3 pl-md-0">Categories</span>
@@ -335,202 +335,58 @@
 </div>
 <div class="container p-0">
 <div class="d-flex flex-wrap justify-content-between">
-   <div class="col-lg-3 col-md-4 col-sm-6 col-12">
-      <div class="card border-0 feature-products">
-         <img class="card-img-top " src="{{asset('img/feature-products-img-01.webp')}}" alt="Card image cap">
-         <div class="card-body d-flex p-0 pt-1">
-            <p class="card-text col-8 w-100">
-               <a href="#" class=" my-link p-0" >Product Default Layout</a>
-            </p>
-            <p class="card-text col-4 p-0">Rs. 6,278.14</p>
-         </div>
-         <div class="feature-product-icons">
-            <ul class="list-group">
-               <li class="list-group-item border-0 pb-0">
-                  <a href="#">
-                  <i class="fas fa-search fa-lg "></i>
-                  </a>
-               </li>
-               <li class="list-group-item border-0 pb-0"> 
-                  <a href="">
-                  <i class="fas fa-compress-arrows-alt fa-lg"></i>
-                  </a>
-               </li>
-               <li class="list-group-item border-0">
-                  <a href="#">
-                  <i class="far fa-heart fa-lg"></i>
-                  </a>
-               </li>
-            </ul>
-         </div>
-         <div class="items-home-page-btn">
-            <form>           
-               <button class="btn btn-outline-secondary btn-home-page" type="button">
-               <i class="fas fa-shopping-cart mr-1"></i>Add To Card
-               </button>
-            </form>
-         </div>
-         <div class="col-9 items-home-page-sizeNcolor">
-            <div class="items-home-page-size d-flex flex-wrap justify-content-around mb-2">
-               <span class="rounded-circle">S</span>
-               <span class="rounded-circle">M</span>
-               <span class="rounded-circle">L</span>
+@foreach($results as $result)
+        <a href="{{route('getProductSingle',['id'=>Crypt::encrypt($result->id)])}}">
+            <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+                <div class="card border-0 feature-products">
+                    <img class="card-img-top " src="{{asset('img/uploads/'.$result->preview.'')}}" alt="Card image cap">
+                    <div class="card-body d-flex p-0 pt-1">
+                        <p class="card-text col-8 w-100">
+                            <a href="{{route('getProductSingle',['id'=>Crypt::encrypt($result->id)])}}" class="my-link p-0">{{$result->title}}</a>
+                        </p>
+                        <p class="card-text col-4 p-0">${{$result->price}}</p>
+                    </div>
+                    <div class="feature-product-icons">
+                        <ul class="list-group">
+                            <li class="list-group-item border-0 pb-0">
+                                <button class="btn p-0">
+                                    <i class="fas fa-compress-arrows-alt fa-lg"></i>
+                                </button>
+                            </li>
+                            <li class="list-group-item border-0">
+                                <button class="add-to-desired btn p-0" data-code="{{$result->p_code}}" data-name="{{$result->title}}" data-price="{{$result->price}}" data-img="{{$result->preview}}" data-link="{{Crypt::encrypt($result->id)}}" >
+                                    <i class="far fa-heart fa-lg"></i>
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="items-home-page-btn">
+                        <form>
+                            <button class="btn btn-outline-secondary btn-home-page add-to-cart" data-code="{{$result->p_code}}" data-name="{{$result->title}}" data-price="{{$result->price}}" data-img="{{$result->preview}}" data-link="{{Crypt::encrypt($result->id)}}" type="button">
+                                <i class="fas fa-shopping-cart mr-1"></i>Add To Card
+                            </button>
+                        </form>
+                    </div>
+                    <div class="col-9 items-home-page-sizeNcolor">
+                        <div class="items-home-page-size d-flex flex-wrap justify-content-around mb-2">
+                        <span class="d-none size-data" data-size=""></span>
+                        @foreach($result->SizeLimit as $size)
+                            <span class="rounded-circle font-weight-bold" data-size="{{$size->name}}">{{$size->name}}</span>
+                        @endforeach
+                        </div>
+                        <div class="items-home-page-color d-flex flex-wrap justify-content-around">
+                        <span class="d-none color-data" data-color=""></span>
+                        @foreach($result->ColorLimit as $color)
+                            <span class="rounded-circle" style="background-color: {{$color->ColorCode->code}};" data-color="{{$color->ColorCode->name}}"></span>
+                        @endforeach
+                        <a href="{{route('getProductSingle',['id'=>Crypt::encrypt($result->id)])}}" class="my-link text-xs"><span class="rounded-circle">Other</span></a>
+
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="items-home-page-color d-flex flex-wrap justify-content-around">
-               <span class="rounded-circle" style="background-color: blanchedalmond;"></span>
-               <span class="rounded-circle" style="background-color: rgb(182, 134, 61);"></span>
-               <span class="rounded-circle" style="background-color: rgb(176, 190, 228);"></span>
-            </div>
-         </div>
-      </div>
-   </div>
-   <div class="col-lg-3 col-md-4 col-sm-6 col-12">
-      <div class="card border-0 feature-products">
-         <img class="card-img-top " src="{{asset('img/feature-products-img-02.webp')}}" alt="Card image cap">
-         <div class="card-body d-flex p-0 pt-1">
-            <p class="card-text col-8 w-100">
-               <a href="#" class=" my-link p-0" >Product Default Layout</a>
-            </p>
-            <p class="card-text col-4 p-0">Rs. 6,278.14</p>
-         </div>
-         <div class="feature-product-icons">
-            <ul class="list-group">
-               <li class="list-group-item border-0 pb-0">
-                  <a href="#">
-                  <i class="fas fa-search fa-lg "></i>
-                  </a>
-               </li>
-               <li class="list-group-item border-0 pb-0"> 
-                  <a href="">
-                  <i class="fas fa-compress-arrows-alt fa-lg"></i>
-                  </a>
-               </li>
-               <li class="list-group-item border-0">
-                  <a href="#">
-                  <i class="far fa-heart fa-lg"></i>
-                  </a>
-               </li>
-            </ul>
-         </div>
-         <div class="items-home-page-btn">
-            <form>           
-               <button class="btn btn-outline-secondary btn-home-page" type="button">
-               <i class="fas fa-shopping-cart mr-1"></i>Add To Card
-               </button>
-            </form>
-         </div>
-         <div class="col-9 items-home-page-sizeNcolor">
-            <div class="items-home-page-size d-flex flex-wrap justify-content-around mb-2">
-               <span class="rounded-circle">S</span>
-               <span class="rounded-circle">M</span>
-               <span class="rounded-circle">L</span>
-            </div>
-            <div class="items-home-page-color d-flex flex-wrap justify-content-around">
-               <span class="rounded-circle" style="background-color: blanchedalmond;"></span>
-               <span class="rounded-circle" style="background-color: rgb(182, 134, 61);"></span>
-               <span class="rounded-circle" style="background-color: rgb(176, 190, 228);"></span>
-            </div>
-         </div>
-      </div>
-   </div>
-   <div class="col-lg-3 col-md-4 col-sm-6 col-12">
-      <div class="card border-0 feature-products">
-         <img class="card-img-top " src="{{asset('img/feature-products-img-03.webp')}}" alt="Card image cap">
-         <div class="card-body d-flex p-0 pt-1">
-            <p class="card-text col-8 w-100">
-               <a href="#" class=" my-link p-0" >Product Default Layout</a>
-            </p>
-            <p class="card-text col-4 p-0">Rs. 6,278.14</p>
-         </div>
-         <div class="feature-product-icons">
-            <ul class="list-group">
-               <li class="list-group-item border-0 pb-0">
-                  <a href="#">
-                  <i class="fas fa-search fa-lg "></i>
-                  </a>
-               </li>
-               <li class="list-group-item border-0 pb-0"> 
-                  <a href="">
-                  <i class="fas fa-compress-arrows-alt fa-lg"></i>
-                  </a>
-               </li>
-               <li class="list-group-item border-0">
-                  <a href="#">
-                  <i class="far fa-heart fa-lg"></i>
-                  </a>
-               </li>
-            </ul>
-         </div>
-         <div class="items-home-page-btn">
-            <form>           
-               <button class="btn btn-outline-secondary btn-home-page" type="button">
-               <i class="fas fa-shopping-cart mr-1"></i>Add To Card
-               </button>
-            </form>
-         </div>
-         <div class="col-9 items-home-page-sizeNcolor">
-            <div class="items-home-page-size d-flex flex-wrap justify-content-around mb-2">
-               <span class="rounded-circle">S</span>
-               <span class="rounded-circle">M</span>
-               <span class="rounded-circle">L</span>
-            </div>
-            <div class="items-home-page-color d-flex flex-wrap justify-content-around">
-               <span class="rounded-circle" style="background-color: blanchedalmond;"></span>
-               <span class="rounded-circle" style="background-color: rgb(182, 134, 61);"></span>
-               <span class="rounded-circle" style="background-color: rgb(176, 190, 228);"></span>
-            </div>
-         </div>
-      </div>
-   </div>
-   <div class="col-lg-3 col-md-4 col-sm-6 col-12">
-      <div class="card border-0 feature-products">
-         <img class="card-img-top " src="{{asset('img/feature-products-img-04.webp')}}" alt="Card image cap">
-         <div class="card-body d-flex p-0 pt-1">
-            <p class="card-text col-8 w-100">
-               <a href="#" class=" my-link p-0" >Product Default Layout</a>
-            </p>
-            <p class="card-text col-4 p-0">Rs. 6,278.14</p>
-         </div>
-         <div class="feature-product-icons">
-            <ul class="list-group">
-               <li class="list-group-item border-0 pb-0">
-                  <a href="#">
-                  <i class="fas fa-search fa-lg "></i>
-                  </a>
-               </li>
-               <li class="list-group-item border-0 pb-0"> 
-                  <a href="">
-                  <i class="fas fa-compress-arrows-alt fa-lg"></i>
-                  </a>
-               </li>
-               <li class="list-group-item border-0">
-                  <a href="#">
-                  <i class="far fa-heart fa-lg"></i>
-                  </a>
-               </li>
-            </ul>
-         </div>
-         <div class="items-home-page-btn">
-            <form>           
-               <button class="btn btn-outline-secondary btn-home-page" type="button">
-               <i class="fas fa-shopping-cart mr-1"></i>Add To Card
-               </button>
-            </form>
-         </div>
-         <div class="col-9 items-home-page-sizeNcolor">
-            <div class="items-home-page-size d-flex flex-wrap justify-content-around mb-2">
-               <span class="rounded-circle">S</span>
-               <span class="rounded-circle">M</span>
-               <span class="rounded-circle">L</span>
-            </div>
-            <div class="items-home-page-color d-flex flex-wrap justify-content-around">
-               <span class="rounded-circle" style="background-color: blanchedalmond;"></span>
-               <span class="rounded-circle" style="background-color: rgb(182, 134, 61);"></span>
-               <span class="rounded-circle" style="background-color: rgb(176, 190, 228);"></span>
-            </div>
-         </div>
-      </div>
-   </div>
+        </a>
+        @endforeach
 </div>
 <div style="color:red!important;" class="d-flex justify-content-center">{{$results->links()}}</div>
 

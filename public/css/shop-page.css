@@ -28,18 +28,26 @@
 }
 
 .filter-dropdown-content{
-    display: none;
     top: 70%;
     background:white;
     z-index: 900;
-    width: 300%;
-}
+    width: 302%;
+    visibility: hidden;
+    transition:0.4s;
+    opacity: 0;
 
+
+}
+.filter-dropdown:hover .filter-dropdown-content{
+    visibility: visible;
+    top:100%;
+    opacity:1;
+}
 .right-0{
     right: 0;
 }
-.left-0{
-    left: 0;
+.left-4{
+    left:-4px;
 }
 .filter-color{
     height: 20px;

@@ -1,11 +1,10 @@
 @extends('site.layout.app') 
 @section('head')
 <link rel="stylesheet" href="{{asset('css\home-page.css')}}"> 
-<link rel="stylesheet" href="{{asset('css\product.css')}}"> 
 @endsection 
 @section('content')
 <div class="myW-100">a</div>
-<div class="container">
+<div class="container-fluid">
     <div class="row m-0 w-100 home-layout">
         <div class="col-lg-4 col-md-4 col-sm-4 p-1 layout-item">
             <a href="#" class="overflow-hidden d-block w-100">
@@ -54,59 +53,56 @@
 <div class="container p-0">
     <div class="d-flex flex-wrap ">
         @foreach($results as $result)
-        <a href="product/{{$result->id}}">
+        <a href="{{route('getProductSingle',['id'=>Crypt::encrypt($result->id)])}}">
             <div class="col-lg-3 col-md-4 col-sm-6 col-12">
                 <div class="card border-0 feature-products">
                     <img class="card-img-top " src="{{asset('img/uploads/'.$result->preview.'')}}" alt="Card image cap">
                     <div class="card-body d-flex p-0 pt-1">
                         <p class="card-text col-8 w-100">
-                            <a href="product/{{$result->id}}" class="my-link p-0">{{$result->title}}</a>
+                            <a href="{{route('getProductSingle',['id'=>Crypt::encrypt($result->id)])}}" class="my-link p-0">{{$result->title}}</a>
                         </p>
                         <p class="card-text col-4 p-0">${{$result->price}}</p>
                     </div>
                     <div class="feature-product-icons">
                         <ul class="list-group">
                             <li class="list-group-item border-0 pb-0">
-                                <a href="#">
+                                <button class="btn p-0">
                                     <i class="fas fa-compress-arrows-alt fa-lg"></i>
-                                </a>
+                                </button>
                             </li>
                             <li class="list-group-item border-0">
-                                <a href="#">
+                                <button class="add-to-desired btn p-0" data-code="{{$result->p_code}}" data-name="{{$result->title}}" data-price="{{$result->price}}" data-img="{{$result->preview}}" data-link="{{Crypt::encrypt($result->id)}}" >
                                     <i class="far fa-heart fa-lg"></i>
-                                </a>
+                                </button>
                             </li>
                         </ul>
                     </div>
                     <div class="items-home-page-btn">
                         <form>
-                            <button class="btn btn-outline-secondary btn-home-page" type="button">
+                            <button class="btn btn-outline-secondary btn-home-page add-to-cart" data-code="{{$result->p_code}}" data-name="{{$result->title}}" data-price="{{$result->price}}" data-img="{{$result->preview}}" data-link="{{Crypt::encrypt($result->id)}}" type="button">
                                 <i class="fas fa-shopping-cart mr-1"></i>Add To Card
                             </button>
                         </form>
                     </div>
                     <div class="col-9 items-home-page-sizeNcolor">
                         <div class="items-home-page-size d-flex flex-wrap justify-content-around mb-2">
+                        <span class="d-none size-data" data-size=""></span>
                         @foreach($result->SizeLimit as $size)
-                            <span class="rounded-circle font-weight-bold">{{$size->name}}</span>
+                            <span class="rounded-circle font-weight-bold" data-size="{{$size->name}}">{{$size->name}}</span>
                         @endforeach
                         </div>
                         <div class="items-home-page-color d-flex flex-wrap justify-content-around">
+                        <span class="d-none color-data" data-color=""></span>
                         @foreach($result->ColorLimit as $color)
-                            <span class="rounded-circle" style="background-color: {{$color->ColorCode->code}};"></span>
+                            <span class="rounded-circle" style="background-color: {{$color->ColorCode->code}};" data-color="{{$color->ColorCode->name}}"></span>
                         @endforeach
-                        <a href="product/{{$result->id}}" class="my-link text-xs"><span class="rounded-circle">Other</span></a>
+                        <a href="{{route('getProductSingle',['id'=>Crypt::encrypt($result->id)])}}" class="my-link text-xs"><span class="rounded-circle">Other</span></a>
 
                         </div>
-                        
                     </div>
                 </div>
             </div>
         </a>
-
-
-        
-
         @endforeach
    </div>
 </div>

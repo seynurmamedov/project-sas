@@ -11,7 +11,7 @@
       <a href="#" class="my-link"> Contact Us</a>
    </p>
 </div>
-<div class="container  mb-5">
+<div class="container-fluid  mb-5">
    <div class="row text-center " >
       <div class="col-12 col-sm-6 col-lg-3">
          <p><i class="fas fa-phone-alt fa-2x" style="color: #fb5c42;"></i></p>

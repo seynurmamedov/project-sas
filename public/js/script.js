@@ -28,16 +28,6 @@ $(".back-to-top").click(function(){
 })
 
 
-
-// drop-down animation
-$(".filter-dropdown").hover(function(){
-  $( this ).children(".filter-dropdown-content").css({ "display":"inline-block"})
-  $( this ).children(".filter-dropdown-content").animate({ "top":"100%" ,"opacity":"1"},400)
-    },function(){
-      $( this ).children(".filter-dropdown-content").hide()
-      $( this ).children(".filter-dropdown-content").animate({ "top":"70%" ,"opacity":"0"})
-      })  
-
 //Navbar table-size animation
 
 $(".nav-btn-anim").click(function(){
@@ -96,18 +86,21 @@ var dataPopUp=$(this).data('pop-up')
 
 //Feature Products 
 $(".items-home-page-size > span").click(function(){
-  $(".items-home-page-size > span").css({"background-color":"rgb(223, 223, 223)","color":"black"})
-  $(this).css({"background-color":"red","color":"white"})
+  $(this).siblings('span').css({"background-color":"rgb(223, 223, 223)","color":"black"});
+  $(this).css({"background-color":"red","color":"white"});
+  $(this).siblings('.size-data').data('size',$(this).data('size'));
 })
 
 $(".items-home-page-color > span").click(function(){
-  $(".items-home-page-color > span").css({"border-color":"rgb(223, 223, 223)"})
-  $(this).css({"border-color":"red"})
+  $(this).siblings('span').css({"border-color":"transparent"});
+  $(this).css({"border-color":"#fb5c42"});
+  $(this).siblings('.color-data').data('color',$(this).data('color'));
 })
 
 $(".sort-by").click(function(){
-  $(".sort-selected").html($(this).children("a").html())
+  $(".sort-selected").html($(this).children("a").html());
 })
+
 
 //treeview
 $('.treeview').click(function(){

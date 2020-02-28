@@ -36,7 +36,7 @@
     width: 35px;
     height: 35px;
     background: rgb(223, 223, 223);
-    border: 1px solid transparent;
+    border: 1px solid rgb(223, 223, 223);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -52,18 +52,18 @@
 .feature-product-icons li{
     background-color: transparent;
 }
-.feature-product-icons a{
+.feature-product-icons button{
     color: #171717;
     text-decoration: none;
     display: inline;
 }
-.feature-product-icons a i{
+.feature-product-icons button i{
     font-size: 16px;
-    transition: 0.3s;
+    transition:0.3s;
+
 }
-.feature-product-icons a:hover i{
+.feature-product-icons button:hover i{
     color: #fb5c42;
-    transition: 0.3s;
 }
 .items-home-page-sizeNcolor{
     height: 25px;
@@ -100,5 +100,7 @@
         margin: auto;
         margin-bottom: 30px;
     }
-
+    .feature-products:hover .feature-product-icons{
+        right: 10px;
+    }
 }

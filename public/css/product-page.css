@@ -31,7 +31,7 @@
     color: black;   
 }
 
-.items-home-page-sizeNcolor{
+.items-product-page-sizeNcolor{
     width: 400px;
     transition: .5s;
 }
@@ -47,15 +47,7 @@
     font-size: 12px;
     cursor: pointer;
 }
-.my-btn {
-    background-color: #fb5c42!important;
-    color: white;
-}
-.my-btn:hover {
-    background-color: white!important;
-    color: #fb5c42!important;
-    border: 1px solid #fb5c42;
-}
+
 .cursor-pointer{
     cursor: pointer;
 }

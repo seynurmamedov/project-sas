@@ -1,8 +1,10 @@
 *{
     margin: 0;
     padding: 0;  
-    font-family: 'Quicksand', sans-serif;
+    font-family: 'Poppins',sans-serif ;
+    
 }
+
 
 .nav-top{
     display: table-cell;
@@ -118,9 +120,16 @@ transition: 0.1s;
 .red-border .nav-link:hover::after{
     transform: scale(1);
 }
-
+.my-btn {
+    background-color: #fb5c42!important;
+    color: white;
+}
+.my-btn:hover {
+    background-color: white!important;
+    color: #fb5c42!important;
+    border: 1px solid #fb5c42;
+}
 .my-dropdown{
-
     position: relative; 
   }
   
@@ -378,10 +387,13 @@ transition: 0.1s;
 button:focus {
     outline: 0;
     box-shadow: none!important;
-   
 }
 input:focus{
     border-color: inherit!important;
     -webkit-box-shadow: none!important;
     box-shadow: none!important;
 }
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }

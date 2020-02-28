@@ -5,12 +5,14 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
       <meta name="csrf-token" content="{{ csrf_token() }}">
-      <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+      <!-- <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet"> -->
       <link href="https://use.fontawesome.com/releases/v5.0.1/css/all.css" rel="stylesheet">
       <link rel="icon" href="{{asset('img/uploads/'.$settings->logo.'')}}" type="image/icon type">
       <link rel="stylesheet" href="{{asset('css\bootstrap.min.css')}}">
       <link rel="stylesheet" href="{{asset('css\navbar.css')}}">
       <link rel="stylesheet" href="{{asset('css\footer.css')}}">
+      <link rel="stylesheet" href="{{asset('css\product.css')}}">    
       @yield('head')    
       <script src="https://kit.fontawesome.com/54230c22d1.js" crossorigin="anonymous"></script>
       <title>{{$settings->title}}</title>
@@ -23,7 +25,6 @@
 
          <div class="input-group search-input mx-auto mb-5">
             <input type="text" id="search"  name="search" class="form-control border-top-0 border-right-0 border-left-0" placeholder="Search">
-
          </div>  
          <div class="container">
 
@@ -119,19 +120,19 @@
          <div class="mobile-clearfix">
             <div class="mobile-nav-top fixed-top">
                <div class="logo top-icons d-flex justify-content-between">
-                  <a href="#" class="col-4 mt-3 p-0 ">
+                  <button class=" btn col-4 p-0 ">
                   <i class="search-button fas fa-search fa-lg mr-3 "></i>
-                  </a>
+                  </button>
                   <a class="nav-link p-0 col-4 mt-1" href="{{route('getHome')}}">
                      <h2 class="p-0"> 
                         Capie<span class="color-orange">.</span>
                      </h2>
                   </a>
-                  <a href="" class="col-4 p-0 mt-3">
-                     <i class="fas fa-shopping-bag fa-lg">
-                        <div class="red-circle rounded-circle" >1</div>
+                  <button class=" col-4 btn p-0 m-0" data-toggle="modal" data-target="#cart">
+                    <i class="fas fa-shopping-bag fa-lg col-4 p-0" >
+                        <div class="red-circle rounded-circle" ><span class="total-count"></span></div>
                      </i>
-                  </a>
+                  </button>
                </div>
             </div>
          </div>
@@ -186,24 +187,24 @@
                   </a>
                </div>
                <div class="pb-5 mb-5 top-icons pr-0">
-                  <a href="#" class="search-button">
+                  <button class="btn p-0 search-button">
                   <i class="fas fa-search fa-lg mr-4 "></i>
-                  </a>
-                  <a href="">
-                     <i class="fas fa-compress-arrows-alt fa-lg mr-4 ">
-                        <div class="red-circle rounded-circle" >0</div>
+                  </button>
+                  <a href="{{route('compare')}}" class="">
+                     <i class="fas fa-compress-arrows-alt fa-lg mr-4">
+                        <div class="red-circle rounded-circle" ><span class="total-count-compare"></div>
                      </i>
                   </a>
-                  <a href="#">
+                  <button class="btn p-0" data-toggle="modal" data-target="#desired">
                      <i class="far fa-heart fa-lg mr-4">
-                        <div class="red-circle rounded-circle" >0</div>
+                        <div class="red-circle rounded-circle" ><span class="total-count-desired"></span></div>
                      </i>
-                  </a>
-                  <a href="">
+                  </button>
+                  <button class="btn p-0" data-toggle="modal" data-target="#cart">
                      <i class="fas fa-shopping-bag fa-lg">
-                        <div class="red-circle rounded-circle" >1</div>
+                        <div class="red-circle rounded-circle" ><span class="total-count"></span></div>
                      </i>
-                  </a>
+                  </button>
                </div>
                <nav class="navbar pr-0 pl-0  " id="navbar">
                   <ul class="navbar-nav w-100 pb-5 red-border ">
@@ -286,6 +287,7 @@
             <!-- navbar end -->
             <div class="main position-relative">
                <!-- content -->
+               
                @yield('content')
                <!-- content end -->
                <!-- footer -->
@@ -469,25 +471,63 @@
             <div class="clear-fx-long"></div>
          </div>
       </div>
+      <!-- modals -->
+      <div class="modal fade" id="cart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+         <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+               <div class="modal-header">
+               <h3 class="modal-title font-weight-bold" id="exampleModalLabel">Cart</h5>
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+               </button>
+               </div>
+               <div class="modal-body">
+                  <div class="show-cart row">
+                  
+                  </div>
+                  <div class="justify-content-end h4 color-orange t-price">Total price: $<span class="total-cart"></span>.00</div>
+               </div>
+               <div class="modal-footer">
+               <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Close</button>
+               <button type="button" class="btn my-btn">Order now</button>
+               </div>
+            </div>
+         </div>
+      </div> 
+      <div class="modal fade" id="desired" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+         <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+               <div class="modal-header">
+               <h3 class="modal-title font-weight-bold" id="exampleModalLabel">Wish list </h5>
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+               </button>
+               </div>
+               <div class="modal-body">
+                  <div class="show-desired row">
+                  
+                  </div>
+               </div>
+               <div class="modal-footer">
+               <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Close</button>
+               </div>
+            </div>
+         </div>
+      </div> 
    </body>
    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
-   <script type="text/javascript">
-   $('#search').on('keyup',function(){
-      $value=$(this).val();
-
-      $.ajax({
-         type : 'get',
-         url : '{{route('search')}}',
-         data:{'search':$value},
-         success:function(data){
-            $('.searchAjax').html(data);
-         }
-      });
-   })
-   </script>
-   <script type="text/javascript">
-   $.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
-   </script>
+   <script>
+    var config = {
+        routes: {
+            search: "{{ route('search') }}"
+        }
+    };
+</script>
+<script type="text/javascript">$.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
+      var assetImgLink="{{ URL::asset('img/uploads/')}}";
+      var assetProductLink="{{ URL::asset('product')}}";
+      </script>
+   <script src="{{URL::asset('js/myapp.js')}}"></script>
    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/js/bootstrap.min.js" integrity="sha384-3qaqj0lc6sV/qpzrc1N5DC6i1VRn/HyX4qdPaiEFbn54VjQBEU341pvjz7Dv3n6P" crossorigin="anonymous"></script>
    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

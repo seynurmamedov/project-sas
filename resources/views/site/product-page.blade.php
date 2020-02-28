@@ -14,7 +14,7 @@
       <a href="#" class="my-link"> Product details</a>
    </p>
 </div>
-<div class="container max-width-product" >
+<div class="container-fluid max-width-product" >
    <div class="row mb-5">
       <div class="col-lg-6 col-md-5 d-flex flex-wrap">
          <div class="col-lg-2 col-md-2 p-0 mt-4 d-lg-block d-md-block d-sm-none" >
@@ -41,7 +41,7 @@
             <p class="h2 font-weight-bold mb-2">{{$result->title}}</p>
             <p class="h3 font-weight-bold" style="color: #fb5c42;">${{$result->price}}</p>
             <p>{{$result->text}}</p>
-            <div class="items-home-page-sizeNcolor mt-5">
+            <div class="items-product-page-sizeNcolor mt-5">
                <div class="d-flex justify-content-between">
                   <div class="col-2">
                      <h4 class="font-weight-bold">Size:</h4>

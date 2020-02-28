@@ -11,7 +11,7 @@
       <a href="#" class="my-link"> About Us</a>
    </p>
 </div>
-<div class="container p-0 d-flex flex-wrap justify-content-around aling-items-center mb-5">
+<div class="container-fluid p-0 d-flex flex-wrap justify-content-around aling-items-center mb-5">
    <div class="card col-lg-6 col-md-6 col-sm-12 border-0" >
       <img class="card-img-top " src="{{asset('img/about-img-01.webp')}}" alt="Card image cap">
       <div class="card-body">

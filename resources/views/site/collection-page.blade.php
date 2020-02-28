@@ -11,7 +11,7 @@
       <a href="#" class="my-link"> Collection</a>
    </p>
 </div>
-<div class="container">
+<div class="container-fluid">
    <div class=" row home-layout">
       <div class="col-lg-6 col-md-6 col-sm-12 p-1  layout-item" >
          <a href="#" class="overflow-hidden d-block w-100 ">
