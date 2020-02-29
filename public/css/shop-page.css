@@ -17,7 +17,7 @@
   cursor: pointer;
 }
 .my-link2{
-    color: #555555!important;
+    color: #555555;
     transition: 0.3s;
     text-decoration: none!important;
     font-size: 14px;

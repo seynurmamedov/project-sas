@@ -8,15 +8,9 @@
         <div class="col-md-8">
         <div class="w-100 mt-lg-5 mt-md-5 mb-5 text-center">
             <p class="h1 font-weight-bold w-100">{{ __('Login') }}</p>
-            <p class="w-100">
-                <a href="#" class="my-link">Home </a>
-                <i class="fas fa-chevron-right" style="font-size: 12px;"></i>
-                <a href="#" class="my-link">{{ __('Login') }}</a>
-            </p>
         </div>
-                <div class=""></div>
 
-                <div class="card-body">
+                <div class="card-body mb-5 pb-5">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 

@@ -92,24 +92,15 @@ $(".items-home-page-size > span").click(function(){
 })
 
 $(".items-home-page-color > span").click(function(){
-  $(this).siblings('span').css({"border-color":"transparent"});
+  $(this).siblings('span').css({"border-color":"rgb(223, 223, 223)"});
   $(this).css({"border-color":"#fb5c42"});
   $(this).siblings('.color-data').data('color',$(this).data('color'));
 })
 
-$(".sort-by").click(function(){
-  $(".sort-selected").html($(this).children("a").html());
+
+$(".sort-by >button").click(function(){
+  $(".sort-selected").html($(this).children("p").html());
 })
-
-
-//treeview
-$('.treeview').click(function(){
-  $(this).siblings(".nested").slideToggle(200,function(){
-    var treeview =  $(".rotated").data('rotated');
-    $(".treeview").children("i").toggleClass("rotate-icon")
-  })
-})
-
 
 //slider
 if($('.slider-for').is(':visible')==true){

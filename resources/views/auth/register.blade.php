@@ -8,11 +8,6 @@
         <div class="col-md-8">
                 <div class="w-100 mt-lg-5 mt-md-5 mb-5 text-center">
                     <p class="h1 font-weight-bold w-100">{{ __('Register') }}</p>
-                    <p class="w-100">
-                        <a href="#" class="my-link">Home </a>
-                        <i class="fas fa-chevron-right" style="font-size: 12px;"></i>
-                        <a href="#" class="my-link">{{ __('Register') }}</a>
-                    </p>
                 </div>
 
                 <div class="card-body">

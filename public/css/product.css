@@ -88,10 +88,16 @@
         right: 10px;
     }
     .items-home-page-btn{
-        top: 280px;
-        left: 50%;
-        transform: translate(-50%, 0%);
+        position: static;
+        transform: translate(0%, 0%);
+        margin: auto;
+        margin-bottom: 10px;
     }
+    .items-home-page-btn form .btn-home-page{
+        border: 1px solid rgb(223, 223, 223)!important;
+        
+    }
+  
     .items-home-page-sizeNcolor{
         position: static;
         transform: translate(0%, 0%);

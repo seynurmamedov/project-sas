@@ -11,7 +11,7 @@
                 <img src="{{asset('img/home-img-1.webp')}}" width="100%" height="100%" alt="">
                 <div class="position-absolute text-center layout-item-img-1">
                     <p class="font-weight-bold" style="color:#fb5c42">CLOTHING</p>
-                    <h3 class="font-weight-bold" style="color:black">Tie Cylinder Bag</h3>
+                    <p class="font-weight-bold class-name" style="color:black">Tie Cylinder Bag</p>
                 </div>
             </a>
         </div>
@@ -21,7 +21,7 @@
             </a>
             <div class="position-absolute layout-item-img-2">
                 <p class="font-weight-bold" style="color:#fb5c42">MEN'S</p>
-                <h3 class="font-weight-bold" style="color:black">Rounded Neck Cotton</h3>
+                <p class="font-weight-bold class-name" style="color:black">Rounded Neck Cotton</p>
                 <a href="# ">Shop Clother</a>
             </div>
         </div>
@@ -31,7 +31,7 @@
             </a>
             <div class="position-absolute layout-item-img-3">
                 <p class="font-weight-bold" style="color:#fb5c42">WOMEN'S</p>
-                <h3 class="font-weight-bold" style="color: black">Snowboard Clothing</h3>
+                <p class="font-weight-bold class-name" style="color: black">Snowboard Clothing</p>
                 <a href="# ">Shop Clother</a>
             </div>
         </div>
@@ -39,8 +39,8 @@
             <a href="#" class="overflow-hidden d-block w-100">
                 <img src="{{asset('img/home-img-4.webp')}}" width="100%" height="100%" alt="">
                 <div class="position-absolute text-center layout-item-img-1">
-                    <p class="font-weight-bold" style="color:#fb5c42">GLASSES
-                        <h3 class="font-weight-bold" style="color:black">Aviation Sunglasses</h3>
+                    <p class="font-weight-bold" style="color:#fb5c42">GLASSES</p>
+                    <p class="font-weight-bold class-name" style="color:black">Aviation Sunglasses</p>
                 </div>
             </a>
         </div>
@@ -50,14 +50,14 @@
     <p class="h1 font-weight-bold w-100">Feature Products</p>
     <p class="w-100">Top sale on this week</p>
 </div>
-<div class="container p-0">
+<div class="container-fluid p-0">
     <div class="d-flex flex-wrap ">
         @foreach($results as $result)
         <a href="{{route('getProductSingle',['id'=>Crypt::encrypt($result->id)])}}">
-            <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+            <div class="col-lg-3 col-md-4 col-sm-6 col-6">
                 <div class="card border-0 feature-products">
                     <img class="card-img-top " src="{{asset('img/uploads/'.$result->preview.'')}}" alt="Card image cap">
-                    <div class="card-body d-flex p-0 pt-1">
+                    <div class="card-body d-flex p-0 mt-2 mb-2 " style="height:48px;">
                         <p class="card-text col-8 w-100">
                             <a href="{{route('getProductSingle',['id'=>Crypt::encrypt($result->id)])}}" class="my-link p-0">{{$result->title}}</a>
                         </p>
@@ -65,11 +65,6 @@
                     </div>
                     <div class="feature-product-icons">
                         <ul class="list-group">
-                            <li class="list-group-item border-0 pb-0">
-                                <button class="btn p-0">
-                                    <i class="fas fa-compress-arrows-alt fa-lg"></i>
-                                </button>
-                            </li>
                             <li class="list-group-item border-0">
                                 <button class="add-to-desired btn p-0" data-code="{{$result->p_code}}" data-name="{{$result->title}}" data-price="{{$result->price}}" data-img="{{$result->preview}}" data-link="{{Crypt::encrypt($result->id)}}" >
                                     <i class="far fa-heart fa-lg"></i>
@@ -79,8 +74,8 @@
                     </div>
                     <div class="items-home-page-btn">
                         <form>
-                            <button class="btn btn-outline-secondary btn-home-page add-to-cart" data-code="{{$result->p_code}}" data-name="{{$result->title}}" data-price="{{$result->price}}" data-img="{{$result->preview}}" data-link="{{Crypt::encrypt($result->id)}}" type="button">
-                                <i class="fas fa-shopping-cart mr-1"></i>Add To Card
+                            <button class="btn btn-outline-secondary btn-home-page add-to-cart "  data-code="{{$result->p_code}}" data-name="{{$result->title}}" data-price="{{$result->price}}" data-img="{{$result->preview}}" data-link="{{Crypt::encrypt($result->id)}}" type="button">
+                                <i class="fas fa-shopping-cart mr-1 "></i>Add To Card
                             </button>
                         </form>
                     </div>

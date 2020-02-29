@@ -8,7 +8,7 @@
     transform: translate(-50%, 0%);
     font-weight: bolder;
 }
-.layout-item-img-1 h3{
+.layout-item-img-1 .class-name{
     min-width: 300px;
 }
 .layout-item-img-2{
@@ -67,3 +67,4 @@
     font-size: 19px;
 }
 }
+

@@ -5,10 +5,10 @@
 @section('content')
 <div class="w-100 mt-lg-5 mt-md-5 mb-5 text-center">
    <p class="h1 font-weight-bold w-100">About us</p>
-   <p class="w-100 mt-1">
-      <a href="#" class="my-link">Home </a>
+   <span class="w-100 mt-1">
+      <a href="{{route('getHome')}}" class="my-link">Home </a>
       <i class="fas fa-chevron-right" style="font-size: 12px;"></i>
-      <a href="#" class="my-link"> About Us</a>
+      <span  class="my-link"> About Us</span>
    </p>
 </div>
 <div class="container-fluid p-0 d-flex flex-wrap justify-content-around aling-items-center mb-5">
@@ -59,28 +59,28 @@
          <p class="w-100 h5">Our Experience</p>
       </div>
       <div class="d-flex flex-wrap mt-5 text-center">
-         <div class="card col-lg-3 col-md-3 col-sm-6 border-0" >
+         <div class="card col-lg-3 col-md-3 col-sm-6 col-6 border-0" >
             <img class="card-img-top " src="{{asset('img/t1.webp')}}" alt="Card image cap">
             <div class="card-body">
                <h3 class="card-title font-weight-bold">Mason Wong</h3>
                <p class="card-text">Fashion Design </p>
             </div>
          </div>
-         <div class="card col-lg-3 col-md-3 col-sm-6 border-0" >
+         <div class="card col-lg-3 col-md-3 col-sm-6 col-6 border-0" >
             <img class="card-img-top" src="{{asset('img/t2.webp')}}" alt="Card image cap">
             <div class="card-body">
                <h3 class="card-title font-weight-bold">Benjamin</h3>
                <p class="card-text">C.E.O </p>
             </div>
          </div>
-         <div class="card col-lg-3 col-md-3 col-sm-6 border-0" >
+         <div class="card col-lg-3 col-md-3 col-sm-6 col-6 border-0" >
             <img class="card-img-top " src="{{asset('img/t3.webp')}}" alt="Card image cap">
             <div class="card-body">
                <h3 class="card-title font-weight-bold">Jack Bridges</h3>
                <p class="card-text"> Manager</p>
             </div>
          </div>
-         <div class="card col-lg-3 col-md-3 col-sm-6 border-0" >
+         <div class="card col-lg-3 col-md-3 col-sm-6 col-6 border-0" >
             <img class="card-img-top" src="{{asset('img/t4.webp')}}" alt="Card image cap">
             <div class="card-body">
                <h3 class="card-title font-weight-bold">Eugene Cole</h3>

@@ -9,6 +9,32 @@ $('#search').on('keyup',function(){
        }
     });
  })
+ $(".color-change > button").click(function(){
+  $(this).siblings('button').children('p').css({"color":"black"});
+  $(this).children('p').css({"color":"#fb5c42"});
+  $(this).siblings('input').data('data',$(this).data('data'));
+  $category=$('.category-ajax').data('data');
+  $price=$('.price-ajax').data('data');
+  $size=$('.size-ajax').data('data');
+  $color=$('.color-ajax').data('data');
+  $sort=$('.sort-ajax').data('data');
+  $.ajax({
+     type : 'get',
+     url : config.routes.filter,
+     data:{
+     'category':$category,
+     'price':$price,
+     'size':$size,
+     'color':$color,
+     'sort':$sort
+    },
+     success:function(data){
+        $('.filter-ajax').html(data);
+     }
+  });
+})
+
+
 
 
 
@@ -29,14 +55,14 @@ var shoppingCart = (function() {
    
    // Save cart
    function saveCart() {
-     sessionStorage.setItem('shoppingCart', JSON.stringify(cart));
+     localStorage.setItem('shoppingCart', JSON.stringify(cart));
    }
    
      // Load cart
    function loadCart() {
-     cart = JSON.parse(sessionStorage.getItem('shoppingCart'));
+     cart = JSON.parse(localStorage.getItem('shoppingCart'));
    }
-   if (sessionStorage.getItem("shoppingCart") != null) {
+   if (localStorage.getItem("shoppingCart") != null) {
      loadCart();
    }
    
@@ -163,7 +189,23 @@ var shoppingCart = (function() {
    else  alert('Select product color!');
  });
  
+ $('.add-to-cart-product').click(function(event) {
+  event.preventDefault();
+  var code = $(this).data('code');
+  var name = $(this).data('name');
+  var img = $(this).data('img');
+  var size = $('.items-product-page-sizeNcolor').children('.d-flex').children('.items-home-page-size').children('.size-data').data('size');
+  var color = $('.items-product-page-sizeNcolor').children('.d-flex').children('.items-home-page-color').children('.color-data').data('color');
+  var price = Number($(this).data('price'));
+  var link = $(this).data('link');
 
+  if(size!="" && color!=""){
+     shoppingCart.addItemToCart(code, name, img, size, color, price, 1, link);
+     displayCart();
+  }
+  else if(size=="" ) alert('Select product size!');
+  else  alert('Select product color!');
+});
  
  
  function displayCart() {
@@ -172,7 +214,7 @@ var shoppingCart = (function() {
 
    for(var i in cartArray) {
      output +=  
-        "<div class='col-6 d-flex pr-0'><div class='col-5 p-0 mb-5'><div class='mini-cart-product-image'>"
+        "<div class='col-lg-6 col-md-12 col-sm-12 d-flex pr-0'><div class='col-5 p-0 mb-5'><div class='mini-cart-product-image'>"
    
           +"<a href='"+assetProductLink+"/"+cartArray[i].link+"'><img src='"+assetImgLink+"/"+cartArray[i].img+"' width='100%'></a>"
         +"</div></div>"
@@ -249,16 +291,16 @@ var shoppingCart = (function() {
   }
   // Save desired
   function saveDesired() {
-    sessionStorage.setItem('shoppingDesired', JSON.stringify(desired));
+    localStorage.setItem('shoppingDesired', JSON.stringify(desired));
   }
   
-    // Load desired
+  // Load desired
   function loadDesired() {
-    desired = JSON.parse(sessionStorage.getItem('shoppingDesired'));
+    desired = JSON.parse(localStorage.getItem('shoppingDesired'));
   }
-  if (sessionStorage.getItem("shoppingDesired") != null) {
+  if (localStorage.getItem("shoppingDesired") != null) {
     loadDesired();
-  }
+  }localStorage
   
 
   // =============================
@@ -269,7 +311,7 @@ var shoppingCart = (function() {
   // Add to Desired
   objDesired.addItemToDesired = function(codeD, nameD, imgD, priceD, linkD) {
     for(var item in desired) {
-      if(desired[item].codeD === code) {
+      if(desired[item].codeD === codeD) {
         return;
       }
     }
@@ -338,7 +380,7 @@ function displayDesired() {
 
   for(var i in DesiredArray) {
     output +=  
-       "<div class='col-6 d-flex pr-0'><div class='col-5 p-0 mb-5'><div class='mini-cart-product-image'>"
+       "<div class='col-lg-6 col-md-12 col-sm-12 d-flex pr-0'><div class='col-5 p-0 mb-5'><div class='mini-cart-product-image'>"
   
          +"<a href='"+assetProductLink+"/"+DesiredArray[i].linkD+"'><img src='"+assetImgLink+"/"+DesiredArray[i].imgD+"' width='100%'></a>"
        +"</div></div>"

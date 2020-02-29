@@ -33,7 +33,7 @@
          </div>
       </div>
       <div class="pop-ups">
-         <div class="pop-up-mobile-store ">
+         <div class="pop-up-mobile-store">
             <ul class="list-group mt-5 d-flex justify-content-center text-center">
                <li class="list-group-item border-0 p-0">
                   <a href="#" class="nav-link my-link  font-weight-bold h5">Kids</a>
@@ -59,18 +59,108 @@
             </ul>
          </div>
          <div class="pop-up-mobile-account">
-            account
+         @guest
+            <div class="container">
+               <div class="row justify-content-center">
+                  <div class="col-md-8">
+                     <div class="w-100 mt-lg-5 mt-md-5 mb-5 text-center">
+                        <p class="h1 font-weight-bold w-100">{{ __('Login') }}</p>
+                     </div>
+                     <div class="card-body mb-2 pb-5">
+                        <form method="POST" action="{{ route('login') }}">
+                           @csrf
+                           <div class="form-group row">
+                              <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                              <div class="col-md-6">
+                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                 @error('email')
+                                       <span class="invalid-feedback" role="alert">
+                                          <strong>{{ $message }}</strong>
+                                       </span>
+                                 @enderror
+                              </div>
+                           </div>
+
+                           <div class="form-group row">
+                              <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+
+                              <div class="col-md-6">
+                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+
+                                 @error('password')
+                                       <span class="invalid-feedback" role="alert">
+                                          <strong>{{ $message }}</strong>
+                                       </span>
+                                 @enderror
+                              </div>
+                           </div>
+
+                           <div class="form-group row">
+                              <div class="col-md-6 offset-md-4">
+                                 <div class="form-check">
+                                       <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+
+                                       <label class="form-check-label" for="remember">
+                                          {{ __('Remember Me') }}
+                                       </label>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="form-group row mb-0">
+                              <div class="col-md-8 offset-md-4">
+                                 <button type="submit" class="btn  btn-login-page">
+                                       {{ __('Login') }}
+                                 </button>
+
+                                 @if (Route::has('password.request'))
+                                       <a class="btn btn-link my-link" href="{{ route('password.request') }}">
+                                          {{ __('Forgot Your Password?') }}
+                                       </a>
+                                 @endif
+                              </div>
+                           </div>
+                        </form>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            @if (Route::has('register'))
+               <p class="nav-item text-center">
+               If you have not registered yet
+                     <a style="color:#fb5c42" href="{{ route('register') }}">{{ __('click') }}</a>.
+               </p>
+            @endif
+            @else
+            <div class="d-flex flex-wrap text-center mt-5 pt-5">
+               <p class="nav-item p-2 mt-5 col-12 mt-5  h4">
+                  <a class="my-link " href="#" role="button">
+                        {{ Auth::user()->name }} <span class="caret"></span>
+                  </a>
+               </p>
+               <p class="nav-item p-2  col-12 h4">
+                  <a class="my-link " href="{{ route('logout') }}"
+                     onclick="event.preventDefault();
+                     document.getElementById('logout-form').submit();">
+                     {{ __('Logout') }}
+                  </a>
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                  @csrf
+                  </form>
+               </p>
+            </div>
+         @endguest
          </div>
          <div class="pop-up-mobile-contact box-shadov-sm">
             <div class="d-flex align-items-center flex-column mt-1 text-center">
                <div class="contact-item mt-3">
-                  <a href="mailto:{{$settings->email}}" class="my-link" style=" color: #fff!important;">
+                  <a href="mailto:{{$settings->email}}" class="my-link " style=" color: #fff!important; font-size:14px;">
                   <i class="fas fa-envelope"></i>
                   {{$settings->email}}
                   </a>
                </div>
                <div class="contact-item mt-3">
-                  <a href="tel:{{$settings->phone1}}" class="my-link" style="color: #fff!important;">
+                  <a href="tel:{{$settings->phone1}}" class="my-link " style="color: #fff!important; font-size:14px;">
                   <i class="fas fa-phone-alt"></i> 
                   Call: {{$settings->phone1}}
                   </a>
@@ -78,7 +168,7 @@
             </div>
          </div>
          <div class="pop-up-mobile-more">
-            <ul class="navbar-nav w-100 text-center mt-3">
+            <ul class="navbar-nav w-100 text-center mt-5 pt-5">
                <li class="nav-item">
                   <a class="nav-link  h5 font-weight-bold" href="{{route('getHome')}}"> Home</a>
                </li>
@@ -94,19 +184,19 @@
                <li class="nav-item">
                   <a class="nav-link  h5 font-weight-bold" href="{{route('getContactUs')}}"> Contact Us</a>
                </li>
-               <hr class="w-100 d-md-none font-weight-bold p-2">
+               <hr class=" mx-auto d-md-none font-weight-bold p-2 w-50 my-5">
                <div class="row  justify-content-center mt-2">
-                  <a href="{{$settings->instagram}}" target="_blank">
+                  <a href="{{$settings->instagram}}" target="_blank" class="social-networks-a">
                      <span class="social-networks rounded-circle mr-2">
                            <i class="fab fa-instagram"></i>
                      </span>
                   </a>
-                  <a href="{{$settings->facebook}}" target="_blank" >
+                  <a href="{{$settings->facebook}}" target="_blank" class="social-networks-a" >
                      <span class="social-networks rounded-circle mr-2">
                            <i class="fab fa-facebook-f"></i>
                      </span>
                   </a>
-                  <a href="{{$settings->youtube}}" target="_blank" >
+                  <a href="{{$settings->youtube}}" target="_blank" class="social-networks-a" >
                      <span class="social-networks rounded-circle">
                            <i class="fab fa-youtube"></i>
                      </span>
@@ -128,43 +218,50 @@
                         Capie<span class="color-orange">.</span>
                      </h2>
                   </a>
-                  <button class=" col-4 btn p-0 m-0" data-toggle="modal" data-target="#cart">
-                    <i class="fas fa-shopping-bag fa-lg col-4 p-0" >
+               <div class="col-4 d-flex align-items-center justify-content-center">
+                  <button class=" btn p-0 mr-4" data-toggle="modal" data-target="#desired">
+                     <i class="far fa-heart fa-lg">
+                        <div class="red-circle rounded-circle" ><span class="total-count-desired"></span></div>
+                     </i>
+                  </button>
+                  <button class=" btn p-0 " data-toggle="modal" data-target="#cart">
+                    <i class="fas fa-shopping-bag fa-lg p-0" >
                         <div class="red-circle rounded-circle" ><span class="total-count"></span></div>
                      </i>
                   </button>
+               </div>
                </div>
             </div>
          </div>
          <div class="mobile-nav-bottom fixed-bottom">
             <div class="top-icons p-0">
-               <ul class="d-flex justify-content-between mb-0 text-center">
+               <ul class="d-flex justify-content-between mb-0 text-center" >
                   <li class="col-2 ">
-                     <a href="{{route('getHome')}}" class="nav-link d-flex flex-wrap">
+                     <a href="{{route('getHome')}}" class="nav-link d-flex flex-wrap" style="color:black" >
                      <i class="fas col-12 fa-home m-0 p-0 fa-mySize"></i>
                      <span class=" mt-1">Home</span>
                      </a>
                   </li>
                   <li class="col-2">
-                     <a href="#" class="nav-link d-flex flex-wrap pop-up-show-hide" data-pop-up="pop-up-mobile-store">
+                     <a href="#" class="nav-link d-flex flex-wrap pop-up-show-hide" style="color:black" data-pop-up="pop-up-mobile-store">
                      <i class="fas fa-map fa-mySize col-12 m-0 p-0 "></i>
-                     <span class=" mt-1">Store</span>
+                     <span class="mt-1">Store</span>
                      </a>
                   </li>
                   <li class="col-2">
-                     <a href="#" class="nav-link d-flex flex-wrap pop-up-show-hide" data-pop-up="pop-up-mobile-account">
+                     <a href="#" class="nav-link d-flex flex-wrap pop-up-show-hide" style="color:black" data-pop-up="pop-up-mobile-account">
                      <i class="fas fa-user fa-mySize col-12 m-0 p-0"></i>
                      <span class="mt-1">Account</span>
                      </a>
                   </li>
                   <li class="col-2">
-                     <a href="#" class="nav-link d-flex flex-wrap pop-up-show-hide" data-pop-up="pop-up-mobile-contact">
+                     <a href="#" class="nav-link d-flex flex-wrap pop-up-show-hide" style="color:black" data-pop-up="pop-up-mobile-contact">
                      <i class="fas fa-map-marker-alt fa-mySize col-12 m-0 p-0"></i>
                      <span class=" mt-1">Contact</span>
                      </a>
                   </li>
                   <li class="col-2">
-                     <a href="#" class="nav-link d-flex flex-wrap pop-up-show-hide" data-pop-up="pop-up-mobile-more">
+                     <a href="#" class="nav-link d-flex flex-wrap pop-up-show-hide" style="color:black" data-pop-up="pop-up-mobile-more">
                      <i class="fas fa-ellipsis-h fa-mySize col-12 m-0 p-0"></i>
                      <span class=" mt-1">More</span>
                      </a>
@@ -190,11 +287,6 @@
                   <button class="btn p-0 search-button">
                   <i class="fas fa-search fa-lg mr-4 "></i>
                   </button>
-                  <a href="{{route('compare')}}" class="">
-                     <i class="fas fa-compress-arrows-alt fa-lg mr-4">
-                        <div class="red-circle rounded-circle" ><span class="total-count-compare"></div>
-                     </i>
-                  </a>
                   <button class="btn p-0" data-toggle="modal" data-target="#desired">
                      <i class="far fa-heart fa-lg mr-4">
                         <div class="red-circle rounded-circle" ><span class="total-count-desired"></span></div>
@@ -259,17 +351,17 @@
                         </div>
                      </div>
                      <div class="row ml-5 pl-1 mt-5 ">
-                        <a href="{{$settings->instagram}}" target="_blank" style="color:black; text-decoration:none">
+                        <a href="{{$settings->instagram}}" target="_blank" class="social-networks-a">
                            <span class="social-networks rounded-circle mr-2">
                                  <i class="fab fa-instagram"></i>
                            </span>
                         </a>
-                        <a href="{{$settings->facebook}}" target="_blank" style="color:black; text-decoration:none" >
+                        <a href="{{$settings->facebook}}" target="_blank" class="social-networks-a" >
                            <span class="social-networks rounded-circle mr-2">
                                  <i class="fab fa-facebook-f"></i>
                            </span>
                         </a>
-                        <a href="{{$settings->youtube}}" target="_blank" style="color:black; text-decoration:none" >
+                        <a href="{{$settings->youtube}}" target="_blank" class="social-networks-a" >
                            <span class="social-networks rounded-circle">
                                  <i class="fab fa-youtube"></i>
                            </span>
@@ -349,10 +441,10 @@
                <footer class="page-footer font-small indigo mt-5">
                   <div class="container">
                      <div class="row justify-content-between">
-                        <div class="col-lg-3 px-2">
+                        <div class="col-lg-3 px-2 col-md-12">
                            <div class="logo">
                               <a class="nav-link p-0" href="{{route('getHome')}}">
-                                 <h2 class="p-0"> 
+                                 <h2 class="p-0 text-lg-left text-md-center"> 
                                     Capie<span class="color-orange">.</span>
                                  </h2>
                               </a>
@@ -458,7 +550,7 @@
                            </ul>
                         </div>
                         <hr class="clearfix w-100 d-md-none">
-                        <div class="col-md-3 ">
+                        <div class="col-md-3 p-16-px">
                            <h5 class="font-weight-bold text-uppercase mt-3 mb-4"><b>{{$settings->phone1}}</b></h5>
                            <span>{{$settings->address}}</span>
                         </div>
@@ -473,7 +565,7 @@
       </div>
       <!-- modals -->
       <div class="modal fade" id="cart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-         <div class="modal-dialog modal-lg" role="document">
+         <div class="modal-dialog modal-lg " role="document">
             <div class="modal-content">
                <div class="modal-header">
                <h3 class="modal-title font-weight-bold" id="exampleModalLabel">Cart</h5>
@@ -519,7 +611,8 @@
    <script>
     var config = {
         routes: {
-            search: "{{ route('search') }}"
+            search: "{{ route('search') }}",
+            filter: "{{ route('filter') }}"
         }
     };
 </script>

@@ -11,13 +11,13 @@
    <p class="w-100">
       <a href="{{route('getHome')}}" class="my-link">Home </a>
       <i class="fas fa-chevron-right" style="font-size: 12px;"></i>
-      <a href="#" class="my-link"> Product details</a>
+      <span class="my-link"> Product details</span>
    </p>
 </div>
 <div class="container-fluid max-width-product" >
    <div class="row mb-5">
       <div class="col-lg-6 col-md-5 d-flex flex-wrap">
-         <div class="col-lg-2 col-md-2 p-0 mt-4 d-lg-block d-md-block d-sm-none" >
+         <div class="col-lg-2 col-md-2 p-0 mt-4 d-lg-block d-md-block d-sm-none d-none" >
             <div class="slider-nav text-center">
                @foreach($result->Images as $image)
                <div class="slick-dupe">
@@ -44,21 +44,23 @@
             <div class="items-product-page-sizeNcolor mt-5">
                <div class="d-flex justify-content-between">
                   <div class="col-2">
-                     <h4 class="font-weight-bold">Size:</h4>
+                     <h5 class="font-weight-bold mt-1">Size:</h5>
                   </div>
-                  <div class="items-home-page-size col-10 d-flex flex-wrap  mb-3">
+                  <div class="items-home-page-size col-10 d-flex flex-wrap  mb-3"> 
+                  <span class="d-none size-data" data-size=""></span>
                      @foreach($result->Size as $size)              
-                      <span class="rounded-circle mr-1 font-weight-bold">{{$size->name}}</span>
+                      <span class="rounded-circle mr-1 font-weight-bold" data-size="{{$size->name}}">{{$size->name}}</span>
                      @endforeach                     
                   </div>
                </div>
                <div class="d-flex justify-content-between">
                   <div class="col-2">
-                     <h4 class="font-weight-bold">Color:</h4>
+                     <h5 class="font-weight-bold mt-1">Color:</h5>
                   </div>                  
                   <div class="items-home-page-color col-10 d-flex flex-wrap">
+                      <span class="d-none color-data" data-color=""></span>
                      @foreach($result->Color as $color)
-                         <span class="rounded-circle mr-1" style="background-color: {{$color->ColorCode->code}};"></span>
+                         <span class="rounded-circle mr-1" data-color="{{$color->ColorCode->name}}" style="background-color: {{$color->ColorCode->code}};"></span>
                      @endforeach
                      
                   </div>
@@ -71,10 +73,10 @@
                   <button class="btn my-btn col-4" data-dir="up"><i class="fas fa-plus"></i></button>
                </div>
                <div class="col-7">
-                  <button class="btn my-btn w-100 font-weight-bold">ADD TO CARD</button>
+                  <button class="btn my-btn w-100 font-weight-bold add-to-cart-product" data-code="{{$result->p_code}}" data-name="{{$result->title}}" data-price="{{$result->price}}" data-img="{{$result->preview}}" data-link="{{Crypt::encrypt($result->id)}}">ADD TO CARD</button>
                </div>
-               <div class="col-2 pl-0">
-                  <button class="btn my-btn w-100 text-center"><i class="far fa-heart"></i></button>
+               <div class="col-2 pl-0"> 
+                  <button class="btn my-btn w-100 text-center add-to-desired" data-code="{{$result->p_code}}" data-name="{{$result->title}}" data-price="{{$result->price}}" data-img="{{$result->preview}}" data-link="{{Crypt::encrypt($result->id)}}"><i class="far fa-heart"></i></button>
                </div>
             </div>   
             <hr class=" w-100 ">
@@ -86,27 +88,29 @@
                   </tr>
                   <tr>
                      <th scope="row">Availability</th>
-                     <td scope="col">In Stock</td>
+                     <td scope="col">{{$result->stock}}</td>
                   </tr>
                   <tr>
                      <th scope="row">Share:</th>
                      <td scope="col" class="row mt-1 p-0">      
                         
+                     <div class="row">
+                        <a href="{{$settings->instagram}}" target="_blank" class="social-networks-a">
                            <span class="social-networks rounded-circle mr-2">
-                              <a href="#" class="">
                                  <i class="fab fa-instagram"></i>
-                              </a>
                            </span>
+                        </a>
+                        <a href="{{$settings->facebook}}" target="_blank" class="social-networks-a" >
                            <span class="social-networks rounded-circle mr-2">
-                              <a href="">
                                  <i class="fab fa-facebook-f"></i>
-                              </a>
                            </span>
+                        </a>
+                        <a href="{{$settings->youtube}}" target="_blank" class="social-networks-a" >
                            <span class="social-networks rounded-circle">
-                              <a href="#" class="">
                                  <i class="fab fa-youtube"></i>
-                              </a >
                            </span>
+                        </a>
+                     </div>
                      
                      </td>
                   </tr>
@@ -117,7 +121,7 @@
    </div>
    <div class="row">
       <div class="col-lg-4"><hr></div>
-      <div class="col-lg-4">
+      <div class="col-lg-4 p-0">
          <ul class="list-inline d-flex text-center dri-item">
             <li class="col-lg-4 border-0 list-group-item dri-items cursor-pointer p-0 h5 pt-1" data-dri="description">Description</li>
             <li class="col-lg-4 border-0 list-group-item dri-items cursor-pointer p-0 h5 pt-1" data-dri="review">Review</li>

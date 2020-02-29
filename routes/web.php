@@ -13,7 +13,6 @@
 
 Route::get('/home','Site\ProductsController@getProducts')->name('getHome');
 Route::get('/search','Site\LiveSearchController@action')->name('search');
-Route::get('/compare','Site\LiveSearchController@action')->name('compare');
 Route::get('/', 'Site\ProductsController@getProducts')->name('getHome');
 
 Route::get('/product/{id}', 'Site\ProductsController@getProductSingle')->name('getProductSingle');
@@ -21,13 +20,16 @@ Route::get('/product/{id}', 'Site\ProductsController@getProductSingle')->name('g
 Route::get('/collection', function () {
     return view('site.collection-page');
 })->name('getCollection');
+
+Route::get('/shop', 'Site\ShopController@getProductsShop')->name('getShop');
+Route::get('/filter', 'Site\ShopController@filter')->name('filter');
+
 Route::get('/about', function () {
     return view('site.about-page');
 })->name('getAbout');
 Route::get('/contact-us', function () {
     return view('site.contact-us-page');
 })->name('getContactUs');
-Route::get('/shop', 'Site\ShopController@getProductsShop')->name('getShop');
 
 
 Route::middleware(['auth','auth.admin'])->group(function () {
