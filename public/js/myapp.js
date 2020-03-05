@@ -13,20 +13,20 @@ $('#search').on('keyup',function(){
   $(this).siblings('button').children('p').css({"color":"black"});
   $(this).children('p').css({"color":"#fb5c42"});
   $(this).siblings('input').data('data',$(this).data('data'));
-  $category=$('.category-ajax').data('data');
-  $price=$('.price-ajax').data('data');
-  $size=$('.size-ajax').data('data');
-  $color=$('.color-ajax').data('data');
-  $sort=$('.sort-ajax').data('data');
+  $category=$(this).siblings('.category-ajax').data('data');
+  $size=$(this).siblings('.size-ajax').data('data');
+  $color=$(this).siblings('.color-ajax').data('data');
+  $sort=$(this).siblings('.sort-ajax').data('data');
+  $gender=$(this).siblings('.gender-ajax').data('data');
   $.ajax({
      type : 'get',
      url : config.routes.filter,
      data:{
      'category':$category,
-     'price':$price,
      'size':$size,
      'color':$color,
-     'sort':$sort
+     'sort':$sort,
+     'gender':$gender
     },
      success:function(data){
         $('.filter-ajax').html(data);
@@ -171,7 +171,7 @@ var shoppingCart = (function() {
  // Triggers / Events
  // ***************************************** 
  // Add item
- $('.add-to-cart').click(function(event) {
+ $('body').on("click",".add-to-cart",function(event) {
    event.preventDefault();
    var code = $(this).data('code');
    var name = $(this).data('name');
@@ -189,7 +189,7 @@ var shoppingCart = (function() {
    else  alert('Select product color!');
  });
  
- $('.add-to-cart-product').click(function(event) {
+ $('body').on("click",".add-to-cart-product",function(event) {
   event.preventDefault();
   var code = $(this).data('code');
   var name = $(this).data('name');
@@ -359,14 +359,13 @@ var shoppingCart = (function() {
 // Triggers / Events
 // ***************************************** 
 // Add item
-$('.add-to-desired').click(function(event) {
+$('body').on("click",".add-to-desired",function(event) {
   event.preventDefault();
   var codeD = $(this).data('code');
   var nameD = $(this).data('name');
   var imgD = $(this).data('img');
   var priceD = Number($(this).data('price'));
   var linkD = $(this).data('link');
-  
   shoppingDesired.addItemToDesired(codeD, nameD, imgD, priceD, linkD);
       displayDesired();
 });

@@ -6,154 +6,103 @@
 @section('pop-up')
 <div class="pop-up-mobile-sort">
    <div class="nav-top-back fixed-top">
-      <div class="logo top-icons d-flex justify-content-between">
-         <a href="#" class="col-4 mt-3 p-0 ">
-         <i class="fas fa-arrow-left pop-up-show-hide" data-pop-up="pop-up-mobile-sort"></i>
-         <i class="fas fa-search fa-lg mr-3 search-button "></i>
-         </a>
-         <a class="nav-link p-0 col-4 mt-3" href="#">
-            <h3 class=""> 
+      <div class="logo top-icons d-flex ">
+         <div class="col-4 p-0 mt-2 d-flex flex-wrap justify-content-center">
+            <button class=" btn col-2  p-0 ">
+            <i class="fas fa-arrow-left pop-up-show-hide" data-pop-up="pop-up-mobile-sort"></i>
+            </button>
+         </div>
+         <p class="nav-link p-0 col-4 mt-3 h3 font-weight-bold" >       
                Sort
-            </h3>
-         </a>
-         <a href="" class="col-4 p-0 mt-3">
-            <i class="fas fa-shopping-bag fa-lg">
-               <div class="red-circle rounded-circle" >1</div>
-            </i>
-         </a>
+         </p>
       </div>
    </div>
    <div class="d-flex justify-content-center mt-5">
-      <ul class="text-center p-0 list-group border-0 shadow-sm">
-         <li class="list-group-item border-0 p-0">
-            <a href="#" class="nav-link my-link h5" >Featured</a>
-         </li>
-         <li class="list-group-item border-0 p-0">
-            <a href="#" class="nav-link my-link h5" >Price, low to high</a>
-         </li>
-         <li class="list-group-item border-0 p-0">
-            <a href="#" class="nav-link my-link h5" >Price, high to low</a>
-         </li>
-         <li class="list-group-item border-0 p-0">
-            <a href="#" class="nav-link my-link h5" >Alphabetically, A-Z</a>
-         </li>
-         <li class="list-group-item border-0 p-0">
-            <a href="#" class="nav-link my-link h5" >Alphabetically, Z-A</a>
-         </li>
-         <li class="list-group-item border-0 p-0">
-            <a href="#" class="nav-link my-link h5" >Date, old to new</a>
-         </li>
-         <li class="list-group-item border-0 p-0">
-            <a href="#" class="nav-link my-link h5" >Date, new to old</a>
-         </li>
-         <li class="list-group-item border-0 p-0">
-            <a href="#" class="nav-link my-link h5">Best Selling</a>
-         </li>
+      <ul class="text-center p-0 list-group border-0 shadow-0 color-change sort-by">
+         <input type="text" class="d-none sort-ajax" data-data="[]">
+         <button class="list-group-item border-0 p-0 text-lg-left text-md-center"  data-data='["price", "asc"]'>
+            <p class="nav-link  m-0 h5" >Price, low to high</p>
+         </button>
+         <button class="list-group-item border-0 p-0 text-lg-left text-md-center"  data-data='["price", "desc"]'>                 
+          <p class="nav-link  m-0 h5" >Price, high to low</p>
+         </button>
+         <button class="list-group-item border-0 p-0 text-lg-left text-md-center"  data-data='["title", "asc"]'>                 
+          <p class="nav-link  m-0 h5" >Alphabetically, A-Z</p>
+         </button>              
+         <button class="list-group-item border-0 p-0 text-lg-left text-md-center"  data-data='["title", "desc"]'>                 
+          <p class="nav-link  m-0 h5" >Alphabetically, Z-A</p>
+         </button>
+         <button class="list-group-item border-0 p-0 text-lg-left text-md-center"  data-data='["created_at", "asc"]'>                
+           <p class="nav-link  m-0 h5" >Date, old to new</p>
+         </button>
+         <button class="list-group-item border-0 p-0 text-lg-left text-md-center"  data-data='["created_at", "desc"]'>                
+           <p class="nav-link  m-0 h5" >Date, new to old</p>
+         </button>
       </ul>
    </div>
 </div>
 <div class="pop-up-mobile-filter">
    <div class="nav-top-back fixed-top">
-      <div class="logo top-icons d-flex justify-content-between">
-         <a href="#" class="col-4 mt-3 p-0 ">
-         <i class="fas fa-arrow-left pop-up-show-hide" data-pop-up="pop-up-mobile-filter"></i>
-         <i class="fas fa-search fa-lg mr-3 search-button"></i>
-         </a>
-         <a class="nav-link p-0 col-4 mt-3" href="#">
-            <h3 class=""> 
+<div class="logo top-icons d-flex ">
+         <div class="col-4 p-0 mt-2 d-flex flex-wrap justify-content-center">
+            <button class=" btn col-2  p-0 ">
+            <i class="fas fa-arrow-left pop-up-show-hide" data-pop-up="pop-up-mobile-filter"></i>
+            </button>
+         </div>
+         <p class="nav-link p-0 col-4 mt-3 h3 font-weight-bold" >       
                Filter
-            </h3>
-         </a>
-         <a href="" class="col-4 p-0 mt-3">
-            <i class="fas fa-shopping-bag fa-lg">
-               <div class="red-circle rounded-circle" >1</div>
-            </i>
-         </a>
+         </p>
       </div>
    </div>
    <div class="row modal-body text-center mt-3">
-      <!-- price -->
-      <div class=" col-12">
-         <span class="h5 font-weight-bold ">Price</span>
-         <ul class="list-group mt-2">
-            <li class="list-group-item border-0 p-0">
-               <a href="#" class="nav-link my-link">Under $100</a>
-            </li>
-            <li class="list-group-item border-0 p-0">
-               <a href="#" class="nav-link my-link"> $100 - $200</a>
-            </li>
-            <li class="list-group-item border-0 p-0" >
-               <a href="#" class="nav-link my-link"> Above $200</a>
-            </li>
+      <div class=" col-12 mb-4">
+         <span class="h5 font-weight-bold pl-lg-3 pl-md-0">Gender</span>
+         <ul class="list-group mt-2 color-change">
+            <input type="text" class="d-none gender-ajax" data-data="">
+            <button class="btn p-0 list-group-item border-0 p-0 text-lg-left text-md-center" data-data="1">
+               <p class="nav-link my-link2 text-capitalize m-0">Men</p>
+            </button>
+            <button class="btn p-0 list-group-item border-0 p-0 text-lg-left text-md-center" data-data="2">
+               <p class="nav-link my-link2 text-capitalize m-0">Woman</p>
+            </button>
+         </ul>
+      </div>
+      <div class="col-12">
+         <span class="h5 font-weight-bold pl-lg-3 pl-md-0">Categories</span>
+         <ul class="list-group mt-2 color-change">
+            <input type="text" class="d-none category-ajax" data-data="">
+            @foreach($categories as $category)
+            <button class="btn h6 p-0 list-group-item border-0 p-0 text-lg-left text-md-center" data-data="{{$category->id}}">
+               <p class="nav-link my-link2 text-capitalize m-0">{{$category->name}}</p>
+            </button>
+            @endforeach                       
          </ul>
       </div>
       <!-- Size -->
       <div class=" col-12 mt-3">
-         <span class="h5 font-weight-bold ">Size</span>
-         <ul class="list-group mt-2">
-            <li class="list-group-item border-0 p-0">
-               <a href="#" class="nav-link my-link">Small</a>
-            </li>
-            <li class="list-group-item border-0 p-0">
-               <a href="#" class="nav-link my-link"> Medium</a>
-            </li>
-            <li class="list-group-item border-0 p-0">
-               <a href="#" class="nav-link my-link"> Large</a>
-            </li>
-            <li class="list-group-item border-0 p-0">
-               <a href="#" class="nav-link my-link"> Extra Large</a>
-            </li>
-            <li class="list-group-item border-0 p-0">
-               <a href="#" class="nav-link my-link"> XS</a>
-            </li>
-            <li class="list-group-item border-0 p-0">
-               <a href="#" class="nav-link my-link"> M</a>
-            </li>
-            <li class="list-group-item border-0 p-0">
-               <a href="#" class="nav-link my-link"> XL</a>
-            </li>
+         <span class="h5 font-weight-bold pl-lg-3 pl-md-0">Size</span>
+         <ul class="list-group mt-2 color-change">
+            <input type="text" class="d-none size-ajax" data-data="">
+            @foreach($sizes as $size)
+            <button class="btn p-0 list-group-item border-0 p-0 text-lg-left text-md-center" data-data="{{$size->name}}">
+               <p class="nav-link my-link2 m-0" >{{$size->name}}</p>
+            </button>
+            @endforeach                       
          </ul>
       </div>
       <!-- Colors -->
       <div class=" col-12 mt-3">
-         <span class="h5 font-weight-bold ">Colors</span>
-         <div class="list-group mt-2">
-            <div class="list-group-item border-0 p-0">
-               <a href="#" class="nav-link my-link">
-               <span class="filter-color rounded-circle d-inline-block" style="background: #f44336;"></span>
-               <span>Red</span>
-               </a>
-            </div>
-            <div class="list-group-item border-0 p-0">
-               <a href="#" class="nav-link my-link">
-               <span class="filter-color rounded-circle d-inline-block" style="background: #9c27b0;"></span>
-               <span>Purple</span>
-               </a>
-            </div>
-            <div class="list-group-item border-0 p-0">
-               <a href="#" class="nav-link my-link">
-               <span class="filter-color rounded-circle d-inline-block" style="background: #2196f3;"></span>
-               <span>Blue</span>
-               </a>
-            </div>
-            <div class="list-group-item border-0 p-0">
-               <a href="#" class="nav-link my-link">
-               <span class="filter-color rounded-circle d-inline-block" style="background: #4caf50;"></span>
-               <span>Green</span>
-               </a>
-            </div>
-            <div class="list-group-item border-0 p-0">
-               <a href="#" class="nav-link my-link">
-               <span class="filter-color rounded-circle d-inline-block" style="background: #ffeb3b;"></span>
-               <span>Yellow</span>
-               </a>
-            </div>
-            <div class="list-group-item border-0 p-0">
-               <a href="#" class="nav-link my-link">
-               <span class="filter-color rounded-circle d-inline-block" style="background: #ff9800;"></span>
-               <span>Orange</span>
-               </a>
-            </div>
+         <span class="h5 font-weight-bold pl-lg-3 pl-md-0">Colors</span>
+         <div class="list-group mt-2 color-change">
+         <input type="text" class="d-none color-ajax" data-data="">
+            @foreach($colors as $color)
+            <button class="list-group-item border-0 p-0 text-lg-left text-md-center"  data-data="{{$color->id}}">
+               <p class="nav-link my-link2 m-0">
+               <span class="filter-color rounded-circle d-inline-block" style="background: {{$color->code}};     border: 1px solid rgb(223, 223, 223);"></span>
+               <span class="position-color-center text-capitalize">{{$color->name}}</span>
+               </p>
+            </button>
+            @endforeach                       
          </div>
       </div>
    </div>
@@ -168,7 +117,7 @@
       <span class="my-link"> Shop</span>
    </p>
 </div>
-<div class="container-fluid p-0 d-lg-block d-md-block d-sm-none d-none">
+<div class="container-fluid p-0 d-lg-block d-md-block d-sm-none d-none mb-3">
    <div class="d-flex justify-content-between pt-3 pr-3 pl-3 pb-0 dropdown " style="background-color: #f8f8f2;">
       <div class="col-lg-4 my-auto ">
          <div class="filter-dropdown d-inline-block ">
@@ -176,38 +125,35 @@
             <!-- Categories -->
             <div class="container-fluid position-absolute shadow-sm dropdown-content filter-dropdown-content left-4">
                <div class="row ">
-                  <div class="col-lg-2 col-md-6 text-lg-left text-md-center    m-lg-4 mr-lg-5 m-md-0 mt-md-5">
+                  <div class="col-lg-2 col-md-6 text-lg-left text-md-center  m-lg-4 mr-lg-5 m-md-0 mt-md-5">
+                     <span class="h5 font-weight-bold pl-lg-3 pl-md-0">Gender</span>
+                     <ul class="list-group mt-2 color-change">
+                        <input type="text" class="d-none gender-ajax" data-data="">
+                        <button class="btn p-0 list-group-item border-0 p-0 text-lg-left text-md-center" data-data="1">
+                           <p class="nav-link my-link2 text-capitalize m-0">Men</p>
+                        </button>
+                        <button class="btn p-0 list-group-item border-0 p-0 text-lg-left text-md-center" data-data="2">
+                           <p class="nav-link my-link2 text-capitalize m-0">Woman</p>
+                        </button>
+                        </ul>
+                  </div>
+                  <!-- category -->
+                  <div class="col-lg-2 col-md-6 text-lg-left text-md-center m-lg-4 mr-lg-5 m-md-0 mt-md-5">
                      <span class="h5 font-weight-bold pl-lg-3 pl-md-0">Categories</span>
                      <ul class="list-group mt-2 color-change">
                         <input type="text" class="d-none category-ajax" data-data="">
                         @foreach($categories as $category)
-                        <button class="btn p-0 list-group-item border-0 p-0 text-lg-left text-md-center" data-data="{{$category->name}}">
+                        <button class="btn p-0 list-group-item border-0 p-0 text-lg-left text-md-center" data-data="{{$category->id}}">
                            <p class="nav-link my-link2 text-capitalize m-0">{{$category->name}}</p>
                         </button>
                         @endforeach                       
                      </ul>
                   </div>
-                  <!-- price -->
-                  <div class="col-lg-2 col-md-6 text-lg-left text-md-center m-lg-4 mr-lg-5 m-md-0 mt-md-5">
-                     <span class="h5 font-weight-bold pl-lg-3 pl-md-0">Price</span>
-                     <ul class="list-group mt-2 color-change">
-                     <input type="text" class="d-none price-ajax"  data-data="">
-                        <button class="btn p-0 list-group-item border-0 p-0 text-lg-left text-md-center" data-data="1">
-                           <p class="nav-link my-link2 text-capitalize m-0 " >Under $100</p>
-                        </button>
-                        <button class="btn p-0 list-group-item border-0 p-0 text-lg-left text-md-center"data-data="2">
-                           <p class="nav-link my-link2 text-capitalize m-0 " >$100 - $200</p>
-                        </button>
-                        <button class="btn p-0 list-group-item border-0 p-0 text-lg-left text-md-center"data-data="3">
-                           <p class="nav-link my-link2 text-capitalize m-0 " >Above $200</p>
-                        </button>
-                     </ul>
-                  </div>
                   <!-- Size -->
-                  <div class="col-lg-2 col-md-6 text-lg-left text-md-center m-lg-4 mr-lg-5 m-md-0 mt-md-5">
+                  <div class="col-lg-2 col-md-6 text-lg-left text-md-center m-lg-4 mr-lg-5 m-md-0 mt-md-5 mb-md-5">
                      <span class="h5 font-weight-bold pl-lg-3 pl-md-0">Size</span>
                      <ul class="list-group mt-2 color-change">
-                     <input type="text" class="d-none size-ajax" data-data="">
+                        <input type="text" class="d-none size-ajax" data-data="">
                         @foreach($sizes as $size)
                         <button class="btn p-0 list-group-item border-0 p-0 text-lg-left text-md-center" data-data="{{$size->name}}">
                            <p class="nav-link my-link2 m-0" >{{$size->name}}</p>
@@ -221,7 +167,7 @@
                      <div class="list-group mt-2 color-change">
                      <input type="text" class="d-none color-ajax" data-data="">
                         @foreach($colors as $color)
-                        <button class="list-group-item border-0 p-0 text-lg-left text-md-center"  data-data="{{$color->name}}">
+                        <button class="list-group-item border-0 p-0 text-lg-left text-md-center"  data-data="{{$color->id}}">
                            <p class="nav-link my-link2 m-0">
                            <span class="filter-color rounded-circle d-inline-block" style="background: {{$color->code}};     border: 1px solid rgb(223, 223, 223);"></span>
                            <span class="position-color-center text-capitalize">{{$color->name}}</span>
@@ -244,24 +190,19 @@
             <span class="font-weight-bold h5 mr-1 my-auto pb-3" >Sort by :</span>
             <span class="cursor-pointer sort-selected d-inline h5 my-auto pb-3"> Select</span>
             <ul class="col-lg-6 col-md-12 text-left p-0 list-group border-0 shadow-sm position-absolute filter-dropdown-content right-0 color-change sort-by">
-               <input type="text" class="d-none sort-ajax" data-data="">
-               <button class="list-group-item border-0 p-0 text-lg-left text-md-center"  data-data="1">
+               <input type="text" class="d-none sort-ajax" data-data="[]">
+               <button class="list-group-item border-0 p-0 text-lg-left text-md-center"  data-data='["price", "asc"]'>
                   <p class="nav-link my-link2 m-0 " >Price, low to high</p>
                </button>
-               <button class="list-group-item border-0 p-0 text-lg-left text-md-center"  data-data="2">
-                  <p class="nav-link my-link2 m-0 " >Price, high to low</p>
+               <button class="list-group-item border-0 p-0 text-lg-left text-md-center"  data-data='["price", "desc"]'>                  <p class="nav-link my-link2 m-0 " >Price, high to low</p>
                </button>
-               <button class="list-group-item border-0 p-0 text-lg-left text-md-center"  data-data="3">
-                  <p class="nav-link my-link2 m-0 " >Alphabetically, A-Z</p>
+               <button class="list-group-item border-0 p-0 text-lg-left text-md-center"  data-data='["title", "asc"]'>                  <p class="nav-link my-link2 m-0 " >Alphabetically, A-Z</p>
                </button>              
-               <button class="list-group-item border-0 p-0 text-lg-left text-md-center"  data-data="4">
-                  <p class="nav-link my-link2 m-0" >Alphabetically, Z-A</p>
+               <button class="list-group-item border-0 p-0 text-lg-left text-md-center"  data-data='["title", "desc"]'>                  <p class="nav-link my-link2 m-0" >Alphabetically, Z-A</p>
                </button>
-               <button class="list-group-item border-0 p-0 text-lg-left text-md-center"  data-data="5">
-                  <p class="nav-link my-link2 m-0 " >Date, old to new</p>
+               <button class="list-group-item border-0 p-0 text-lg-left text-md-center"  data-data='["created_at", "asc"]'>                  <p class="nav-link my-link2 m-0 " >Date, old to new</p>
                </button>
-               <button class="list-group-item border-0 p-0 text-lg-left text-md-center"  data-data="6">
-                  <p class="nav-link my-link2 m-0 " >Date, new to old</p>
+               <button class="list-group-item border-0 p-0 text-lg-left text-md-center"  data-data='["created_at", "desc"]'>                  <p class="nav-link my-link2 m-0 " >Date, new to old</p>
                </button>
             </ul>
          </div>
@@ -283,7 +224,7 @@
                         <p class="card-text col-8 w-100">
                             <a href="{{route('getProductSingle',['id'=>Crypt::encrypt($result->id)])}}" class="my-link p-0">{{$result->title}}</a>
                         </p>
-                        <p class="card-text col-4 p-0">${{$result->price}}</p>
+                        <p class="card-text col-4 p-0">${{$result->price}}.00</p>
                     </div>
                     <div class="feature-product-icons">
                         <ul class="list-group">
@@ -321,7 +262,8 @@
             </div>
         </a>
         @endforeach
+<div style="color:red!important; " class="d-flex justify-content-center col-12">{{$results->links()}}</div>
+
 </div>
-<div style="color:red!important;" class="d-flex justify-content-center">{{$results->links()}}</div>
 
 @endsection

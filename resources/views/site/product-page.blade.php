@@ -39,7 +39,7 @@
       <div class="col-lg-6 col-md-7 mt-lg-0 mt-md-0 mt-sm-5">
          <div class="col-12  mb-5">
             <p class="h2 font-weight-bold mb-2">{{$result->title}}</p>
-            <p class="h3 font-weight-bold" style="color: #fb5c42;">${{$result->price}}</p>
+            <p class="h3 font-weight-bold" style="color: #fb5c42;">${{$result->price}}.00</p>
             <p>{{$result->text}}</p>
             <div class="items-product-page-sizeNcolor mt-5">
                <div class="d-flex justify-content-between">

@@ -68,6 +68,11 @@ transition: 0.1s;
     color: white;
     transition: 0.1s;
 }
+.i-add{
+    font-size: 16px!important;
+    transition:0.3s;
+}
+
 .red-circle{
     width: 15px;
     height: 15px;

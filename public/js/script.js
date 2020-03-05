@@ -85,13 +85,13 @@ var dataPopUp=$(this).data('pop-up')
 })
 
 //Feature Products 
-$(".items-home-page-size > span").click(function(){
+$('body').on("click",".items-home-page-size > span",function(){
   $(this).siblings('span').css({"background-color":"rgb(223, 223, 223)","color":"black"});
   $(this).css({"background-color":"red","color":"white"});
   $(this).siblings('.size-data').data('size',$(this).data('size'));
 })
 
-$(".items-home-page-color > span").click(function(){
+$('body').on("click",".items-home-page-color > span",function(){
   $(this).siblings('span').css({"border-color":"rgb(223, 223, 223)"});
   $(this).css({"border-color":"#fb5c42"});
   $(this).siblings('.color-data').data('color',$(this).data('color'));

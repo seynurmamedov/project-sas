@@ -61,7 +61,7 @@
                         <p class="card-text col-8 w-100">
                             <a href="{{route('getProductSingle',['id'=>Crypt::encrypt($result->id)])}}" class="my-link p-0">{{$result->title}}</a>
                         </p>
-                        <p class="card-text col-4 p-0">${{$result->price}}</p>
+                        <p class="card-text col-4 p-0">${{$result->price}}.00</p>
                     </div>
                     <div class="feature-product-icons">
                         <ul class="list-group">
